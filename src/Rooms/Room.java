@@ -1,5 +1,6 @@
 package Rooms;
 
+import Characters.NPC;
 import Items.Item;
 import Characters.Character;
 
@@ -7,7 +8,7 @@ import java.util.HashMap;
 
 public abstract class Room {
     protected String name;
-    protected HashMap<String, Character> characters;
+    protected HashMap<String, NPC> characters;
     protected HashMap<String, Item> items;
     protected HashMap<String, Room> rooms;
 
@@ -20,17 +21,17 @@ public abstract class Room {
 
     public abstract String text ();
 
-    public boolean addCharacter(Character character) {
-        if (!characters.containsKey(character.getName()) && character.getCurrentRoom().getRooms().containsKey(name)) {
-            characters.put(character.getName(), character);
+    public boolean addCharacter(NPC npc) {
+        if (!characters.containsKey(npc.getName()) && npc.getCurrentRoom().getRooms().containsKey(name)) {
+            characters.put(npc.getName(), npc);
             return true;
         }
         return false;
     }
 
-    public boolean removeCharacter(Character character) {
-        if (characters.containsKey(character.getName())) {
-            characters.remove(character.getName());
+    public boolean removeCharacter(NPC npc) {
+        if (characters.containsKey(npc.getName())) {
+            characters.remove(npc.getName());
             return true;
         }
         return false;
@@ -40,7 +41,7 @@ public abstract class Room {
         return name;
     }
 
-    public HashMap<String, Character> getCharacters() {
+    public HashMap<String, NPC> getCharacters() {
         return characters;
     }
 

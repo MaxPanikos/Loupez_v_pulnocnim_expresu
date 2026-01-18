@@ -3,13 +3,12 @@ package Characters;
 import Items.Item;
 import Rooms.Room;
 
-public class Player{
+public class Player extends Character{
     private Item[] inventory;
-    private Room currentRoom;
 
     public Player(Room startingRoom){
+        super(startingRoom);
         inventory = new Item[2];
-        currentRoom = startingRoom;
     }
 
     private int unusedPockets () {

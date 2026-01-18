@@ -2,13 +2,36 @@ package Characters;
 
 import Rooms.Room;
 
-public class NPC extends Character{
+public abstract class NPC extends Character{
+    protected String name;
+    protected int age;
     public NPC(String name, int age, Room currentRoom) {
-        super(name, age, currentRoom);
+        this.name = name;
+        this.age = age;
+        super(currentRoom);
     }
 
-    @Override
-    public String ask() {
-        return super.ask();
+    public String ask () {
+        return "";
+    }
+
+    public boolean accuse () {
+        return false;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

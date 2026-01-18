@@ -3,13 +3,9 @@ package Characters;
 import Rooms.Room;
 
 public abstract class Character {
-    protected String name;
-    protected int age;
     protected Room currentRoom;
 
-    public Character(String name, int age, Room currentRoom) {
-        this.name = name;
-        this.age = age;
+    public Character(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
 
@@ -23,30 +19,6 @@ public abstract class Character {
             return true;
         }
         return false;
-    }
-
-    public String ask () {
-        return "";
-    }
-
-    public boolean accuse () {
-        return false;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public Room getCurrentRoom() {
