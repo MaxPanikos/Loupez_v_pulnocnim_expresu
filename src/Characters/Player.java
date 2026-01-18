@@ -1,7 +1,6 @@
 package Characters;
 
 import Items.Item;
-import Rooms.Hall;
 import Rooms.Room;
 
 public class Player{

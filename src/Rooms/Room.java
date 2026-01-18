@@ -18,9 +18,7 @@ public abstract class Room {
         this.rooms = new HashMap<>();
     }
 
-    public String text () {
-        return "";
-    }
+    public abstract String text ();
 
     public boolean addCharacter(Character character) {
         if (!characters.containsKey(character.getName()) && character.getCurrentRoom().getRooms().containsKey(name)) {
