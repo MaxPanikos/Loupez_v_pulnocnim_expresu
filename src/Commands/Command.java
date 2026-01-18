@@ -1,5 +1,6 @@
 package Commands;
 
-public abstract class Command {
-
+public interface Command {
+    String execute();
+    void exit();
 }

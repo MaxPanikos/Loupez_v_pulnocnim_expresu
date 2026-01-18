@@ -11,11 +11,15 @@ public abstract class Room {
     protected HashMap<String, Item> items;
     protected HashMap<String, Room> rooms;
 
-    public Room(String name) {
-        this.name = name;
+    public Room() {
+        this.name = "Room";
         this.characters = new HashMap<>();
         this.items = new HashMap<>();
         this.rooms = new HashMap<>();
+    }
+
+    public String text () {
+        return "";
     }
 
     public boolean addCharacter(Character character) {

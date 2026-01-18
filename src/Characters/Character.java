@@ -29,6 +29,10 @@ public abstract class Character {
         return "";
     }
 
+    public boolean accuse () {
+        return false;
+    }
+
     public String getName() {
         return name;
     }
