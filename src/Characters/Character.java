@@ -9,18 +9,6 @@ public abstract class Character {
         this.currentRoom = currentRoom;
     }
 
-    public boolean move (Room newRoom) {
-        if (currentRoom.getName().equals(newRoom.getName())) {
-            return false;
-        }
-        if (currentRoom.getRooms().containsKey(newRoom.getName())) {
-            currentRoom.removeCharacter(this);
-            newRoom.addCharacter(this);
-            return true;
-        }
-        return false;
-    }
-
     public Room getCurrentRoom() {
         return currentRoom;
     }
@@ -28,4 +16,5 @@ public abstract class Character {
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
+
 }

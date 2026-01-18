@@ -21,7 +21,7 @@ public abstract class Room {
 
     public abstract String text ();
 
-    public boolean addCharacter(NPC npc) {
+    public boolean addNPC(NPC npc) {
         if (!characters.containsKey(npc.getName()) && npc.getCurrentRoom().getRooms().containsKey(name)) {
             characters.put(npc.getName(), npc);
             return true;
@@ -29,7 +29,7 @@ public abstract class Room {
         return false;
     }
 
-    public boolean removeCharacter(NPC npc) {
+    public boolean removeNPC(NPC npc) {
         if (characters.containsKey(npc.getName())) {
             characters.remove(npc.getName());
             return true;

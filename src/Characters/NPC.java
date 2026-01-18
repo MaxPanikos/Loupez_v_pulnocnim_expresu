@@ -11,6 +11,18 @@ public abstract class NPC extends Character{
         super(currentRoom);
     }
 
+    public boolean move (Room newRoom) {
+        if (currentRoom.getName().equals(newRoom.getName())) {
+            return false;
+        }
+        if (currentRoom.getRooms().containsKey(newRoom.getName())) {
+            currentRoom.removeNPC(this);
+            newRoom.addNPC(this);
+            return true;
+        }
+        return false;
+    }
+
     public String ask () {
         return "";
     }
@@ -23,15 +35,7 @@ public abstract class NPC extends Character{
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getAge() {
         return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 }
