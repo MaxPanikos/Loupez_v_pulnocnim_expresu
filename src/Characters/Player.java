@@ -31,11 +31,11 @@ public class Player extends Character{
     }
 
     public boolean grabItem (Item item) {
-        if (currentRoom.getItems().containsKey(item.name) && unusedPockets() > 0) {
+        if (currentRoom.getItems().containsKey(item.getName()) && unusedPockets() > 0) {
             for (int i = 0; i < inventory.length; i++) {
                 if (inventory[i] == null) {
                     inventory[i] = item;
-                    currentRoom.getItems().remove(item.name);
+                    currentRoom.getItems().remove(item.getName());
                     return true;
                 }
             }
@@ -48,7 +48,7 @@ public class Player extends Character{
         Integer check = checkInventory(item);
         if (check != null) {
             inventory[check] = null;
-            currentRoom.getItems().put(item.name, item);
+            currentRoom.getItems().put(item.getName(), item);
             return true;
         }
         return false;

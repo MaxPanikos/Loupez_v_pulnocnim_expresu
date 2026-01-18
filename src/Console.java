@@ -17,9 +17,7 @@ public class Console {
         player = new Player(null);
     }
 
-    public void setup () {
-
-    }
+    public void setup () {}
 
     public void game () {}
 }
