@@ -15,7 +15,6 @@ import java.util.HashMap;
  */
 public class FileManager {
 
-    private HashMap<String, NPC> npc;
     private HashMap<String, Room> rooms;
 
     /**
@@ -48,10 +47,6 @@ public class FileManager {
 
     }
 
-    public HashMap<String, NPC> getNpc() {
-        return npc;
-    }
-
     public HashMap<String, Room> getRooms() {
         return rooms;
     }
@@ -61,10 +56,10 @@ public class FileManager {
      * @param name the identifier of the location to be found
      * @return the matching location
      */
-    public  Room findLocation(String name) {
-        for (Room l : rooms.values()) {
-            if (l.getName().equals(name)){
-                return l;
+    public  Room findRoom (String name) {
+        for (Room r : rooms.values()) {
+            if (r.getName().equals(name)){
+                return r;
             }
         }
         throw new IllegalArgumentException("Neexistuje lokace s nazvem: " + name);
