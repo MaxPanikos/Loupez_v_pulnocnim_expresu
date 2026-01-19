@@ -6,9 +6,9 @@ public abstract class NPC extends Character{
     protected String name;
     protected int age;
     public NPC(String name, int age, Room currentRoom) {
+        super(currentRoom);
         this.name = name;
         this.age = age;
-        super(currentRoom);
     }
 
     public boolean move (Room newRoom) {
