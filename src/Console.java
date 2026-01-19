@@ -16,10 +16,15 @@ public class Console {
         this.roundCount = 0;
         this.player = new Player(null);
         FileManager fm = FileManager.loadData("GameData.json");
-        this.rooms = fm.getRooms();
+        if (fm != null) {
+            this.rooms = fm.getRooms();
+        } else {
+            System.err.println("Chyba pri nacitani souboru!");
+            this.rooms = new HashMap<>();
+        }
     }
 
-    public void game () {
+    public void play () {
 
     }
 }
