@@ -1,6 +1,6 @@
 import Characters.NPC;
 import Characters.Player;
-import Commands.Command;
+import Commands.*;
 import Rooms.Room;
 
 import java.io.File;
@@ -14,17 +14,24 @@ public class Console {
 
     public Console() {
         this.roundCount = 0;
-        this.player = new Player(null);
         FileManager fm = FileManager.loadData("GameData.json");
         if (fm != null) {
             this.rooms = fm.getRooms();
+            this.player = new Player(rooms.get("sluzebni oddil"));
         } else {
             System.err.println("Chyba pri nacitani souboru!");
             this.rooms = new HashMap<>();
+            return;
         }
+        this.commands = new HashMap<>();
+        this.commands.put("zeptat", new Ask());
+        this.commands.put("exit", new Exit());
+        this.commands.put("prohledat", new Explore());
+        this.commands.put("pomoc", new Help());
+        this.commands.put("pouzit", new Use());
+        this.commands.put("obvinit", new Accuse());
     }
 
     public void play () {
-
     }
 }
