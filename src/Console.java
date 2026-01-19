@@ -3,6 +3,7 @@ import Characters.Player;
 import Commands.Command;
 import Rooms.Room;
 
+import java.io.File;
 import java.util.HashMap;
 
 public class Console {
@@ -10,14 +11,15 @@ public class Console {
     private Player player;
     private HashMap<String, Room> rooms;
     private HashMap<String, Command> commands;
-    private HashMap<String, NPC> npcs;
 
     public Console() {
-        roundCount = 0;
-        player = new Player(null);
+        this.roundCount = 0;
+        this.player = new Player(null);
+        FileManager fm = FileManager.loadData("GameData.json");
+        this.rooms = fm.getRooms();
     }
 
-    public void setup () {}
+    public void game () {
 
-    public void game () {}
+    }
 }
