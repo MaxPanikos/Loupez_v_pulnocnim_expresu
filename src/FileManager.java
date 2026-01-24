@@ -15,7 +15,9 @@ import java.util.HashMap;
  */
 public class FileManager {
 
-    private HashMap<String, Room> rooms;
+    private ArrayList<Item> items;
+    private ArrayList<Room> rooms;
+    private ArrayList<NPC> npcs;
 
     /**
      * Loads game data from a JSON file.
@@ -47,8 +49,16 @@ public class FileManager {
 
     }
 
-    public HashMap<String, Room> getRooms() {
+    public ArrayList<Room> getRooms() {
         return rooms;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public ArrayList<NPC> getNpcs() {
+        return npcs;
     }
 
     /**
@@ -57,7 +67,7 @@ public class FileManager {
      * @return the matching location
      */
     public  Room findRoom (String name) {
-        for (Room r : rooms.values()) {
+        for (Room r : rooms) {
             if (r.getName().equals(name)){
                 return r;
             }

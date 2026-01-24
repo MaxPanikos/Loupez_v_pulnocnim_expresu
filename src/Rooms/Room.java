@@ -12,8 +12,8 @@ public abstract class Room {
     protected HashMap<String, Item> items;
     protected HashMap<String, Room> rooms;
 
-    public Room() {
-        this.name = "Room";
+    public Room(String name) {
+        this.name = name;
         this.characters = new HashMap<>();
         this.items = new HashMap<>();
         this.rooms = new HashMap<>();
