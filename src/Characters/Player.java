@@ -53,4 +53,12 @@ public class Player extends Character{
         }
         return false;
     }
+
+    public boolean move (Room newRoom) {
+        if (currentRoom.getRooms().containsKey(newRoom.getID())) {
+            currentRoom = newRoom;
+            return true;
+        }
+        return false;
+    }
 }
