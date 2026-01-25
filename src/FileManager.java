@@ -1,112 +1,121 @@
 import Characters.NPC;
+import FileManagerHelper.ItemDTO;
+import FileManagerHelper.NPCDTO;
+import FileManagerHelper.RoomDTO;
 import Items.Item;
 import Rooms.Room;
 import com.google.gson.Gson;
-import com.sun.tools.javac.Main;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import FileManager.*;
+import java.util.Map; // Důležitý import!
 
 /**
- * Represents the game data loaded from a JSON file.
- * This class serves as a data container for all static game content, such as items, characters, locations, and quests.
- *
+ * Třída slouží jako "přepravka" pro data z JSONu a zároveň jako loader.
  */
 public class FileManager {
 
-    private ArrayList<ItemDTO> items;
-    private ArrayList<RoomDTO> rooms;
-    private ArrayList<NPCDTO> npcs;
+    // --- ZMĚNA 1: JSON obsahuje objekty {}, takže v Javě musíme použít Map ---
+    private Map<String, ItemDTO> items;
+    private Map<String, RoomDTO> rooms;
+    private Map<String, NPCDTO> npcs;
 
     /**
-     * Loads game data from a JSON file.
-     * @param resourcePath path to the resource file
-     * @return a GameData object filled with the loaded data
+     * Načte data z JSON souboru.
      */
-    public static FileManager loadData (String resourcePath) {
-        //Vytvoření objektu pro práci s JSON souborem
+    public static FileManager loadData(String resourcePath) {
         Gson gson = new Gson();
 
-        //Načtení souboru gamedata.json, musí být ve složce res/resources, ta musí být označena jako resource složka projektu
-        try (InputStream is = Main.class.getResourceAsStream(resourcePath)) {
-
-            //Zde ověřujeme, zdali soubor existuje
+        try (InputStream is = FileManager.class.getResourceAsStream(resourcePath)) {
             if (is == null) {
+                // Přidáno lomítko do chybové hlášky pro nápovědu
                 throw new IllegalStateException("Nenalezen resource: " + resourcePath +
-                        " (zkontrolujte, že soubor je v src/main/resources).");
+                        " (Zkuste přidat '/' na začátek cesty, např: /GameData.json)");
             }
 
-            //Přečte celý JSON a vytvoří instanci GameData, naplní vlastnosti podle názvů klíčů v JSONU, vrátí se hotová třída GameData
+            // Gson nyní naplní Mapy v této třídě
             return gson.fromJson(
                     new InputStreamReader(is, StandardCharsets.UTF_8),
                     FileManager.class
             );
 
         } catch (Exception e) {
+            e.printStackTrace(); // Vypíše detail chyby do konzole
             throw new RuntimeException("Chyba při načítání JSON: " + e.getMessage());
         }
-
     }
 
-    public ArrayList<RoomDTO> getRooms() {
-        return rooms;
-    }
+    // Gettery vrací Mapy
+    public Map<String, RoomDTO> getRooms() { return rooms; }
+    public Map<String, ItemDTO> getItems() { return items; }
+    public Map<String, NPCDTO> getNpcs() { return npcs; }
 
-    public ArrayList<ItemDTO> getItems() {
-        return items;
-    }
-
-    public ArrayList<NPCDTO> getNpcs() {
-        return npcs;
-    }
-
-    /*
-    public  Room findRoom (String name) {
-        for (Room r : rooms) {
-            if (r.getName().equals(name)){
-                return r;
-            }
-        }
-        throw new IllegalArgumentException("Neexistuje lokace s nazvem: " + name);
-    }
+    /**
+     * Převede načtená "syrová" data (DTO) na skutečné herní objekty.
      */
-
-    public HashMap<String, Room> getRoomMap () throws Exception {
+    public HashMap<String, Room> getRoomMap() throws Exception {
         try {
-            HashMap<String, Room> roomsHashMap = new HashMap<>();
-            for (RoomDTO room : rooms) {
-                roomsHashMap.put(room.getID(), new Room(room.getID(), room.getName(), room.getDescription()));
-            }
-            for (ItemDTO item : items) {
-                if (roomsHashMap.containsKey(item.getCurrentRoomID())) {
-                    roomsHashMap.get(item.getCurrentRoomID()).addItem(new Item(item.getName(), item.getDescription()));
-                }
-            }
-            for (NPCDTO npc : npcs) {
-                if (roomsHashMap.containsKey(npc.getCurrentRoomID())) {
-                    roomsHashMap.get(npc.getCurrentRoomID()).spawnNPC(new NPC(npc.getID(), npc.getName(), npc.getAge(), roomsHashMap.get(npc.getCurrentRoomID())));
-                }
-            }
-            for (RoomDTO room : rooms) {
-                ArrayList<String> exits = (ArrayList<String>)room.getExits();
-                HashMap<String, Room> exitsHashMap = new HashMap<>();
-                for (String exit : exits) {
-                    if (roomsHashMap.containsKey(exit)) {
-                        exitsHashMap.put(exit, roomsHashMap.get(exit));
-                    }
+            HashMap<String, Room> worldMap = new HashMap<>();
 
-                }
-                roomsHashMap.get(room.getID()).setRooms(exitsHashMap);
+            // --- ZMĚNA 2: Iterace přes Mapu (používáme .values()) ---
+
+            // 1. Vytvoření instancí místností
+            for (RoomDTO roomDto : rooms.values()) {
+                worldMap.put(roomDto.getID(), new Room(roomDto.getID(), roomDto.getName(), roomDto.getDescription()));
             }
-            return roomsHashMap;
+
+            // 2. Naplnění Itemů
+            for (ItemDTO itemDto : items.values()) {
+                String roomId = itemDto.getCurrentRoomID();
+                if (worldMap.containsKey(roomId)) {
+                    // Pozor: Zde vytváříme nový Item. Ujisti se, že Item má tento konstruktor.
+                    worldMap.get(roomId).addItem(new Item(itemDto.getName(), itemDto.getDescription()));
+                }
+            }
+
+            // 3. Naplnění NPC
+            for (NPCDTO npcDto : npcs.values()) {
+                String roomId = npcDto.getCurrentRoomID();
+                if (worldMap.containsKey(roomId)) {
+                    // Pozor: Zde vytváříme nové NPC. Ujisti se, že NPC má tento konstruktor.
+                    worldMap.get(roomId).spawnNPC(new NPC(
+                            npcDto.getID(),
+                            npcDto.getName(),
+                            npcDto.getAge(),
+                            worldMap.get(roomId) // Předáváme odkaz na místnost
+                    ));
+                }
+            }
+
+            // 4. Propojení místností (Exits)
+            for (RoomDTO roomDto : rooms.values()) {
+                Room currentRoom = worldMap.get(roomDto.getID());
+
+                // Získáme seznam ID východů (List<String>)
+                ArrayList<String> exitsIds = (ArrayList<String>) roomDto.getExits();
+
+                if (exitsIds != null) {
+                    HashMap<String, Room> actualExitsMap = new HashMap<>();
+
+                    for (String exitId : exitsIds) {
+                        if (worldMap.containsKey(exitId)) {
+                            // Propojujeme: Klíč je ID souseda, Hodnota je objekt souseda
+                            actualExitsMap.put(exitId, worldMap.get(exitId));
+                        }
+                    }
+                    // Nastavíme propojené místnosti
+                    currentRoom.setRooms(actualExitsMap);
+                }
+            }
+
+            return worldMap;
+
         } catch (Exception e) {
-            throw new Exception("Nacteni neprobehlo spravne!");
+            e.printStackTrace(); // Pro debugování
+            throw new Exception("Chyba při konverzi DTO na herní objekty: " + e.getMessage());
         }
     }
 }
-

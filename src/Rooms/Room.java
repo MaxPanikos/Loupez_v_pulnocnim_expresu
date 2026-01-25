@@ -43,9 +43,9 @@ public class Room {
     }
 
     public boolean addNPC(NPC npc) {
-        if (!npcs.containsKey(npc.getID()) && npc.getCurrentRoomID().getRooms().contains(npc.getID())) {
+        if (!npcs.containsKey(npc.getID()) && npc.getCurrentRoom().getRooms().containsKey(npc.getID())) {
             npcs.put(npc.getID(), npc);
-            npc.setCurrentRoomID(this);
+            npc.setCurrentRoom(this);
             return true;
         }
         return false;
@@ -109,5 +109,10 @@ public class Room {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return description + " " + npcs;
     }
 }

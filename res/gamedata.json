@@ -1,0 +1,60 @@
+{
+  "items": {
+    "mapa": {
+      "name": "Stará Mapa",
+      "description": "Zmuchlaný kus pergamenu s nákresem cest.",
+      "currentRoomID": "rozcesti"
+    },
+    "kamen": {
+      "name": "Lesklý Kámen",
+      "description": "Vypadá obyčejně, ale hřeje do dlaně.",
+      "currentRoomID": "jeskyne"
+    },
+    "mec": {
+      "name": "Rezavý meč",
+      "description": "Už má nejlepší léta za sebou.",
+      "currentRoomID": "jeskyne"
+    }
+  },
+  "npcs": {
+    "poutnik": {
+      "ID": "poutnik",
+      "name": "Gandalf Šedý",
+      "age": 2000,
+      "currentRoomID": "rozcesti"
+    },
+    "obchodnik": {
+      "ID": "obchodnik",
+      "name": "Vychytralý kupec",
+      "age": 45,
+      "currentRoomID": "les"
+    }
+  },
+  "rooms": {
+    "rozcesti": {
+      "ID": "rozcesti",
+      "name": "Rozcestí",
+      "description": "Stojíš na křižovatce cest.",
+      "exits": [
+        "les",
+        "jeskyne"
+      ]
+    },
+    "les": {
+      "ID": "les",
+      "name": "Temný Les",
+      "description": "Všude kolem jsou stromy.",
+      "exits": [
+        "rozcesti"
+      ]
+    },
+    "jeskyne": {
+      "ID": "jeskyne",
+      "name": "Jeskyně",
+      "description": "Je tu tma a vlhko.",
+      "exits": [
+        "rozcesti"
+      ]
+    }
+  }
+}

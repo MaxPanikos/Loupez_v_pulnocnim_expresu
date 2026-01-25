@@ -45,4 +45,12 @@ public class NPC extends Character{
     public String getID() {
         return ID;
     }
+
+    @Override
+    public String toString() {
+        return "NPC{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }

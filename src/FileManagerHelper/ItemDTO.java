@@ -1,4 +1,4 @@
-package FileManager;
+package FileManagerHelper;
 
 public class ItemDTO {
     private String name;
