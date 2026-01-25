@@ -2,21 +2,24 @@ package Characters;
 
 import Rooms.Room;
 
-public abstract class NPC extends Character{
-    protected String name;
-    protected int age;
-    public NPC(String name, int age, Room currentRoom) {
+public class NPC extends Character{
+    private String ID;
+    private String name;
+    private int age;
+
+    public NPC(String ID, String name, int age, Room currentRoom) {
         super(currentRoom);
+        this.ID = ID;
         this.name = name;
         this.age = age;
     }
 
     public boolean move (Room newRoom) {
-        if (currentRoom.getName().equals(newRoom.getName())) {
+        if (currentRoomID.getID().equals(newRoom.getID())) {
             return false;
         }
-        if (currentRoom.getRooms().containsKey(newRoom.getName())) {
-            currentRoom.removeNPC(this);
+        if (currentRoomID.getRooms().contains(newRoom.getID())) {
+            currentRoomID.removeNPC(this);
             newRoom.addNPC(this);
             return true;
         }
@@ -37,5 +40,9 @@ public abstract class NPC extends Character{
 
     public int getAge() {
         return age;
+    }
+
+    public String getID() {
+        return ID;
     }
 }

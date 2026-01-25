@@ -1,120 +1,75 @@
 {
-  "items": [
-    {
-      "name": "Prach",
-      "description": "Prach, který se objevil ve tvém inventáři. Nemůžeš ho dostat pryč."
-    },
-    {
-      "name": "Vzácný kámen",
-      "description": "Neobvyklý kámen z Jeskyně. Je klíčový pro jeden z úkolů."
-    },
-    {
-      "name": "Borůvky",
-      "description": "Hrnek borůvek. Může posloužit jako drobná odměna nebo dárek."
-    }
-  ],
-  "characters": [
-    {
-      "name": "Duhoslav",
-      "homeLocationId": "loc_crossroads"
-    },
-    {
-      "name": "Gerald",
-      "homeLocationId": "loc_geraldo_house"
-    },
-    {
-      "name": "Hubert",
-      "homeLocationId": "loc_hubert_house"
-    },
-    {
-      "name": "Květuše",
-      "homeLocationId": "loc_kvetuse_house"
-    },
-    {
-      "name": "Listovník",
-      "homeLocationId": "loc_listovnik_house"
-    },
-    {
-      "name": "Mlžan",
-      "homeLocationId": "loc_mlzan_house"
-    },
-    {
-      "name": "Zbyslava",
-      "homeLocationId": "loc_castle"
-    }
-  ],
   "locations": [
     {
-      "id": "loc_crossroads",
-      "name": "Rozcestí",
-      "description": "Výchozí místo a první rozhodování o směru.",
-      "neighbors": ["loc_listovnik_house", "loc_mlzan_house", "loc_kvetuse_house"]
+      "ID": "rozcesti",
+      "name": "Staré Rozcestí",
+      "description": "Stojíš na křižovatce starých cest. Vítr zde fouká o něco silněji. Na sever se tyčí temný les, na východě zeje vstup do podzemí.",
+      "npcs": [
+        {
+          "id": "poutnik",
+          "name": "Unavený Poutník",
+          "dialogue": "Nepouštěj se do lesa v noci, chlapče."
+        }
+      ],
+      "items": [
+        {
+          "id": "mapa",
+          "name": "Zmuchlaná mapa",
+          "weight": 0.1
+        },
+        {
+          "id": "kamen",
+          "name": "Obyčejný kámen",
+          "weight": 1.5
+        }
+      ],
+      "rooms": [
+        "les",
+        "jeskyne"
+      ]
     },
     {
-      "id": "loc_listovnik_house",
-      "name": "Dům Listovníka",
-      "description": "Skromné zázemí Listovníka; souvisí s úkoly a postupem ve hře.",
-      "neighbors": ["loc_crossroads", "loc_hubert_house"]
+      "ID": "les",
+      "name": "Temný Hvozd",
+      "description": "Stromy se zde kroutí do nepřirozených tvarů. Je tu ticho, až příliš velké ticho.",
+      "npcs": [],
+      "items": [
+        {
+          "id": "klacek",
+          "name": "Pevná větev",
+          "weight": 0.5
+        }
+      ],
+      "rooms": [
+        "rozcesti"
+      ]
     },
     {
-      "id": "loc_hubert_house",
-      "name": "Dům Huberta",
-      "description": "Dům podvodníka s různými cetkami.",
-      "neighbors": ["loc_listovnik_house", "loc_mlzan_house"]
-    },
-    {
-      "id": "loc_mlzan_house",
-      "name": "Dům Mlžana",
-      "description": "Místo autority; může otevírat postup v ději.",
-      "neighbors": ["loc_hubert_house", "loc_crossroads", "loc_cave"]
-    },
-    {
-      "id": "loc_kvetuse_house",
-      "name": "Dům Květuše",
-      "description": "Útulná chatrč; zde lze získat důležitý úkol.",
-      "neighbors": ["loc_crossroads", "loc_cave"]
-    },
-    {
-      "id": "loc_cave",
-      "name": "Jeskyně",
-      "description": "Místo pro průzkum a získání vzácného kamene.",
-      "neighbors": ["loc_mlzan_house", "loc_kvetuse_house", "loc_blueberries", "loc_geraldo_house"],
-      "lootTable": ["item_rare_stone"]
-    },
-    {
-      "id": "loc_blueberries",
-      "name": "Borůvčí",
-      "description": "Borůvkový porost; lze získat borůvky.",
-      "neighbors": ["loc_cave", "loc_geraldo_house"],
-      "lootTable": ["item_blueberries"]
-    },
-    {
-      "id": "loc_geraldo_house",
-      "name": "Dům Geralda",
-      "description": "Zahrada a dílna; Gerald zde pracuje s kameny.",
-      "neighbors": ["loc_cave", "loc_blueberries", "loc_castle"]
-    },
-    {
-      "id": "loc_castle",
-      "name": "Hrad princezny",
-      "description": "Bezpečné zázemí hráčky; pozdější fáze hry.",
-      "neighbors": ["loc_geraldo_house"]
-    }
-  ],
-  "quests": [
-    {
-      "id": "q_get_rare_stone",
-      "title": "Získej vzácný kámen",
-      "giverCharacterId": "npc_mlzan",
-      "requiredItems": ["item_rare_stone"],
-      "status": "NOT_STARTED"
-    },
-    {
-      "id": "q_help_kvetuse",
-      "title": "Pomoz Květuši s přípravou",
-      "giverCharacterId": "npc_kvetuse",
-      "requiredItems": ["item_blueberries"],
-      "status": "NOT_STARTED"
+      "ID": "jeskyne",
+      "name": "Vlhká jeskyně",
+      "description": "Slyšíš kapání vody. V rohu místnosti se něco leskne.",
+      "npcs": [
+        {
+          "id": "goblin",
+          "name": "Naštvaný Goblin",
+          "dialogue": "To je moje zlato! Vypadni!"
+        }
+      ],
+      "items": [
+        {
+          "id": "zlato",
+          "name": "Zlatý valoun",
+          "weight": 2.0
+        },
+        {
+          "id": "mec",
+          "name": "Rezavý meč",
+          "weight": 3.5
+        }
+      ],
+      "rooms": [
+        "rozcesti"
+      ]
     }
   ]
 }
