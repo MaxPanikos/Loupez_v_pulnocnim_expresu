@@ -1,59 +1,166 @@
 {
   "items": {
-    "mapa": {
-      "name": "Stará Mapa",
-      "description": "Zmuchlaný kus pergamenu s nákresem cest.",
-      "currentRoomID": "rozcesti"
+    "klic": {
+      "name": "Generální klíč",
+      "description": "Univerzální klíč, který otevírá zamčené dveře (např. Kupé 3).",
+      "currentRoomID": "sluzebni_oddil"
     },
-    "kamen": {
-      "name": "Lesklý Kámen",
-      "description": "Vypadá obyčejně, ale hřeje do dlaně.",
-      "currentRoomID": "jeskyne"
+    "cigarety": {
+      "name": "Cigarety",
+      "description": "Platidlo, za které je ochotný mluvit Generál.",
+      "currentRoomID": "sluzebni_oddil"
     },
-    "mec": {
-      "name": "Rezavý meč",
-      "description": "Už má nejlepší léta za sebou.",
-      "currentRoomID": "jeskyne"
+    "knoflik": {
+      "name": "Utržený knoflík",
+      "description": "První stopa nalezená na podlaze. Zloděj se zachytil o kufr.",
+      "currentRoomID": "kupe1"
+    },
+    "leky": {
+      "name": "Uklidňující léky",
+      "description": "Léky pro Madam Hruškovou, aby se uklidnila a mohla vypovídat.",
+      "currentRoomID": "kupe5"
+    },
+    "dluh": {
+      "name": "Dlužní úpis",
+      "description": "Upomínka na obří dluh nalezená pod polštářem. Motiv činu.",
+      "currentRoomID": "kupe3"
+    },
+    "baterka": {
+      "name": "Baterka",
+      "description": "Nutná pro prohledání temných koutů toalety.",
+      "currentRoomID": "sklad"
+    },
+    "nahrdelnik": {
+      "name": "Diamantový náhrdelník",
+      "description": "Vzácný šperk Madam Hruškové nalezený v nádržce toalety.",
+      "currentRoomID": "toaleta"
     }
   },
   "npcs": {
-    "poutnik": {
-      "ID": "poutnik",
-      "name": "Gandalf Šedý",
-      "age": 2000,
-      "currentRoomID": "rozcesti"
-    },
-    "obchodnik": {
-      "ID": "obchodnik",
-      "name": "Vychytralý kupec",
+    "lojza": {
+      "ID": "lojza",
+      "name": "Kolega Lojza",
       "age": 45,
-      "currentRoomID": "les"
+      "currentRoomID": "sluzebni_oddil"
+    },
+    "hruskova": {
+      "ID": "hruskova",
+      "name": "Madam Hrušková",
+      "age": 50,
+      "currentRoomID": "kupe1"
+    },
+    "kouzelnik": {
+      "ID": "kouzelnik",
+      "name": "Podezřelý Kouzelník",
+      "age": 35,
+      "currentRoomID": "kupe2"
+    },
+    "filip": {
+      "ID": "filip",
+      "name": "Student Filip",
+      "age": 22,
+      "currentRoomID": "kupe3"
+    },
+    "general": {
+      "ID": "general",
+      "name": "Mrzutý Generál",
+      "age": 65,
+      "currentRoomID": "kupe4"
+    },
+    "doktor": {
+      "ID": "doktor",
+      "name": "Starší Lékař",
+      "age": 60,
+      "currentRoomID": "kupe5"
     }
   },
   "rooms": {
-    "rozcesti": {
-      "ID": "rozcesti",
-      "name": "Rozcestí",
-      "description": "Stojíš na křižovatce cest.",
+    "chodba": {
+      "ID": "chodba",
+      "name": "Chodba",
+      "description": "Dlouhá, temná chodba spojující všechna kupé, toaletu i zázemí průvodčích.",
       "exits": [
-        "les",
-        "jeskyne"
+        "sluzebni_oddil",
+        "kupe1",
+        "kupe2",
+        "kupe3",
+        "kupe4",
+        "kupe5",
+        "sklad",
+        "toaleta",
+        "jidelna"
       ]
     },
-    "les": {
-      "ID": "les",
-      "name": "Temný Les",
-      "description": "Všude kolem jsou stromy.",
+    "sluzebni_oddil": {
+      "ID": "sluzebni_oddil",
+      "name": "Služební oddíl",
+      "description": "Karlovo zázemí. Spí tu kolega Lojza. Na stole se válí různé věci.",
       "exits": [
-        "rozcesti"
+        "chodba"
       ]
     },
-    "jeskyne": {
-      "ID": "jeskyne",
-      "name": "Jeskyně",
-      "description": "Je tu tma a vlhko.",
+    "kupe1": {
+      "ID": "kupe1",
+      "name": "Kupé 1 (Madam Hrušková)",
+      "description": "Místo činu. Luxusní kupé, které silně voní parfémem.",
       "exits": [
-        "rozcesti"
+        "chodba"
+      ]
+    },
+    "kupe2": {
+      "ID": "kupe2",
+      "name": "Kupé 2 (Kouzelník)",
+      "description": "Podezřelé místo plné rekvizit, karet a falešných dýk.",
+      "exits": [
+        "chodba"
+      ]
+    },
+    "kupe3": {
+      "ID": "kupe3",
+      "name": "Kupé 3 (Student Filip)",
+      "description": "Malé kupé plné knih a skript.",
+      "exits": [
+        "chodba"
+      ]
+    },
+    "kupe4": {
+      "ID": "kupe4",
+      "name": "Kupé 4 (Generál)",
+      "description": "Stroze zařízené kupé. Generál zde nespí a hlídá.",
+      "exits": [
+        "chodba"
+      ]
+    },
+    "kupe5": {
+      "ID": "kupe5",
+      "name": "Kupé 5 (Doktor)",
+      "description": "Kupé staršího lékaře, je zde cítit dezinfekce.",
+      "exits": [
+        "chodba"
+      ]
+    },
+    "sklad": {
+      "ID": "sklad",
+      "name": "Kumbál",
+      "description": "Malý sklad na konci chodby s úklidovými prostředky.",
+      "exits": [
+        "chodba"
+      ]
+    },
+    "toaleta": {
+      "ID": "toaleta",
+      "name": "Toaleta",
+      "description": "Úzká toaleta. Je tu tma, možná by se hodilo si posvítit.",
+      "exits": [
+        "chodba"
+      ]
+    },
+    "jidelna": {
+      "ID": "jidelna",
+      "name": "Jídelní vůz",
+      "description": "Společné místo, kde se dá sehnat jídlo a potkat ostatní cestující.",
+      "exits": [
+        "chodba"
       ]
     }
   }
