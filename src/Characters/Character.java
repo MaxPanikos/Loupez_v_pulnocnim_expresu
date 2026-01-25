@@ -3,18 +3,17 @@ package Characters;
 import Rooms.Room;
 
 public abstract class Character {
-    protected String currentRoomID;
-    protected
+    protected Room currentRoom;
 
     public Character(Room currentRoom) {
-        this.currentRoomID = currentRoom;
+        this.currentRoom = currentRoom;
     }
 
-    public Room getCurrentRoomID() {
-        return currentRoomID;
+    public Room getCurrentRoom() {
+        return currentRoom;
     }
 
-    public void setCurrentRoomID(Room currentRoomID) {
-        this.currentRoomID = currentRoomID;
+    public void setCurrentRoom(Room currentRoomID) {
+        this.currentRoom = currentRoomID;
     }
 }

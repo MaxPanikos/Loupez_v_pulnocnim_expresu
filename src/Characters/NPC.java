@@ -15,11 +15,11 @@ public class NPC extends Character{
     }
 
     public boolean move (Room newRoom) {
-        if (currentRoomID.getID().equals(newRoom.getID())) {
+        if (currentRoom.getID().equals(newRoom.getID())) {
             return false;
         }
-        if (currentRoomID.getRooms().contains(newRoom.getID())) {
-            currentRoomID.removeNPC(this);
+        if (currentRoom.getRooms().containsKey(newRoom.getID())) {
+            currentRoom.removeNPC(this);
             newRoom.addNPC(this);
             return true;
         }

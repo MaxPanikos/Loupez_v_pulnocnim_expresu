@@ -1,75 +1,53 @@
 {
-  "locations": [
-    {
-      "ID": "rozcesti",
-      "name": "Staré Rozcestí",
-      "description": "Stojíš na křižovatce starých cest. Vítr zde fouká o něco silněji. Na sever se tyčí temný les, na východě zeje vstup do podzemí.",
-      "npcs": [
-        {
-          "id": "poutnik",
-          "name": "Unavený Poutník",
-          "dialogue": "Nepouštěj se do lesa v noci, chlapče."
-        }
-      ],
-      "items": [
-        {
-          "id": "mapa",
-          "name": "Zmuchlaná mapa",
-          "weight": 0.1
-        },
-        {
-          "id": "kamen",
-          "name": "Obyčejný kámen",
-          "weight": 1.5
-        }
-      ],
-      "rooms": [
-        "les",
-        "jeskyne"
-      ]
+  "items": {
+    "mapa": {
+      "name": "Stará Mapa",
+      "description": "Zmuchlaný kus pergamenu s nákresem cest.",
+      "currentRoomID": "rozcesti"
     },
-    {
-      "ID": "les",
-      "name": "Temný Hvozd",
-      "description": "Stromy se zde kroutí do nepřirozených tvarů. Je tu ticho, až příliš velké ticho.",
-      "npcs": [],
-      "items": [
-        {
-          "id": "klacek",
-          "name": "Pevná větev",
-          "weight": 0.5
-        }
-      ],
-      "rooms": [
-        "rozcesti"
-      ]
+    "kamen": {
+      "name": "Lesklý Kámen",
+      "description": "Vypadá obyčejně, ale hřeje do dlaně.",
+      "currentRoomID": "jeskyne"
     },
-    {
-      "ID": "jeskyne",
-      "name": "Vlhká jeskyně",
-      "description": "Slyšíš kapání vody. V rohu místnosti se něco leskne.",
-      "npcs": [
-        {
-          "id": "goblin",
-          "name": "Naštvaný Goblin",
-          "dialogue": "To je moje zlato! Vypadni!"
-        }
-      ],
-      "items": [
-        {
-          "id": "zlato",
-          "name": "Zlatý valoun",
-          "weight": 2.0
-        },
-        {
-          "id": "mec",
-          "name": "Rezavý meč",
-          "weight": 3.5
-        }
-      ],
-      "rooms": [
-        "rozcesti"
-      ]
+    "mec": {
+      "name": "Rezavý meč",
+      "description": "Už má nejlepší léta za sebou.",
+      "currentRoomID": "jeskyne"
     }
-  ]
+  },
+  "npcs": {
+    "poutnik": {
+      "ID": "poutnik",
+      "name": "Gandalf Šedý",
+      "age": 2000,
+      "currentRoomID": "rozcesti"
+    },
+    "obchodnik": {
+      "ID": "obchodnik",
+      "name": "Vychytralý kupec",
+      "age": 45,
+      "currentRoomID": "les"
+    }
+  },
+  "locations": {
+    "rozcesti": {
+      "ID": "rozcesti",
+      "name": "Rozcestí",
+      "description": "Stojíš na křižovatce cest.",
+      "exits": ["les", "jeskyne"]
+    },
+    "les": {
+      "ID": "les",
+      "name": "Temný Les",
+      "description": "Všude kolem jsou stromy.",
+      "exits": ["rozcesti"]
+    },
+    "jeskyne": {
+      "ID": "jeskyne",
+      "name": "Jeskyně",
+      "description": "Je tu tma a vlhko.",
+      "exits": ["rozcesti"]
+    }
+  }
 }

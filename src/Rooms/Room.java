@@ -12,7 +12,7 @@ public class Room {
     private String description;
     private HashMap<String, NPC> npcs;
     private HashMap<String, Item> items;
-    private ArrayList<String> rooms;
+    private HashMap<String, Room> rooms;
 
     public Room(String ID, String name, String description) {
         this.ID = ID;
@@ -20,7 +20,7 @@ public class Room {
         this.description = description;
         this.npcs = new HashMap<>();
         this.items = new HashMap<>();
-        this.rooms = new ArrayList<>();
+        this.rooms = new HashMap<>();
     }
 
     public String text () {
@@ -44,7 +44,7 @@ public class Room {
 
     public boolean addNPC(NPC npc) {
         if (!npcs.containsKey(npc.getID()) && npc.getCurrentRoomID().getRooms().contains(npc.getID())) {
-            npcs.put(npc.getName(), npc);
+            npcs.put(npc.getID(), npc);
             npc.setCurrentRoomID(this);
             return true;
         }
@@ -53,7 +53,15 @@ public class Room {
 
     public boolean removeNPC(NPC npc) {
         if (npcs.containsKey(npc.getID())) {
-            npcs.remove(npc.getName());
+            npcs.remove(npc.getID());
+            return true;
+        }
+        return false;
+    }
+
+    public boolean spawnNPC (NPC npc) {
+        if (!npcs.containsKey(npc.getID())) {
+            npcs.put(npc.getID(), npc);
             return true;
         }
         return false;
@@ -79,7 +87,27 @@ public class Room {
         return items;
     }
 
-    public ArrayList<String> getRooms() {
+    public HashMap<String, Room> getRooms() {
         return rooms;
+    }
+
+    public void setNpcs(HashMap<String, NPC> npcs) {
+        this.npcs = npcs;
+    }
+
+    public void setItems(HashMap<String, Item> items) {
+        this.items = items;
+    }
+
+    public void setRooms(HashMap<String, Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public boolean addItem(Item item) {
+        if (!items.containsKey(item.getName())) {
+            items.put(item.getName(), item);
+            return true;
+        }
+        return false;
     }
 }
