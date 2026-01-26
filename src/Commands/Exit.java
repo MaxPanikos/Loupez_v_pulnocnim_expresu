@@ -2,8 +2,8 @@ package Commands;
 
 public class Exit implements Command {
     @Override
-    public String execute() {
-        return "";
+    public String execute(String command) {
+        return "Program byl ukoncen.";
     }
 
     @Override

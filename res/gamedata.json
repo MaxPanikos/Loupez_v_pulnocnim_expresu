@@ -163,5 +163,6 @@
         "chodba"
       ]
     }
-  }
+  },
+  "startingRoomID": "sluzebni_oddil"
 }

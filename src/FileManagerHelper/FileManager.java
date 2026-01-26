@@ -1,8 +1,9 @@
+package FileManagerHelper;
+
 import Characters.NPC;
-import FileManagerHelper.ItemDTO;
-import FileManagerHelper.NPCDTO;
-import FileManagerHelper.RoomDTO;
+import Characters.Player;
 import Items.Item;
+import Main.World;
 import Rooms.Room;
 import com.google.gson.Gson;
 
@@ -21,6 +22,7 @@ public class FileManager {
     private Map<String, ItemDTO> items;
     private Map<String, RoomDTO> rooms;
     private Map<String, NPCDTO> npcs;
+    private String startingRoomID;
 
     /**
      * Načte data z JSON souboru.
@@ -45,7 +47,6 @@ public class FileManager {
         }
     }
 
-    // Gettery vrací Mapy
     public Map<String, RoomDTO> getRooms() { return rooms; }
     public Map<String, ItemDTO> getItems() { return items; }
     public Map<String, NPCDTO> getNpcs() { return npcs; }
@@ -53,7 +54,7 @@ public class FileManager {
     /**
      * Převede načtená "syrová" data (DTO) na skutečné herní objekty.
      */
-    public HashMap<String, Room> getRoomMap() throws Exception {
+    public World getRoomMap() throws Exception {
         try {
             HashMap<String, Room> worldMap = new HashMap<>();
 
@@ -93,8 +94,14 @@ public class FileManager {
                 }
             }
 
-            return worldMap;
+            Room startingRoomObj = null;
+            if (!worldMap.isEmpty()) {
+                if (worldMap.containsKey(startingRoomID)) {
+                    startingRoomObj = worldMap.get(startingRoomID);
+                }
+            }
 
+            return new World(worldMap, new Player(startingRoomObj));
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("Chyba při konverzi DTO na herní objekty: " + e.getMessage());

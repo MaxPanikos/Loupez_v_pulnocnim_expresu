@@ -3,6 +3,8 @@ package Characters;
 import Items.Item;
 import Rooms.Room;
 
+import java.util.Arrays;
+
 public class Player extends Character{
     private Item[] inventory;
 
@@ -60,5 +62,13 @@ public class Player extends Character{
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "inventory=" + Arrays.toString(inventory) +
+                ", currentRoom=" + currentRoom +
+                '}';
     }
 }

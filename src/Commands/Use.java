@@ -2,7 +2,7 @@ package Commands;
 
 public class Use implements Command {
     @Override
-    public String execute() {
+    public String execute(String command) {
         return "";
     }
 

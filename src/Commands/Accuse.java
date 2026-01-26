@@ -2,7 +2,7 @@ package Commands;
 
 public class Accuse implements Command {
     @Override
-    public String execute() {
+    public String execute(String command) {
         return "";
     }
 
