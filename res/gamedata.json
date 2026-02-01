@@ -1,36 +1,43 @@
 {
   "items": {
     "klic": {
+      "ID": "klic",
       "name": "Generální klíč",
       "description": "Univerzální klíč, který otevírá zamčené dveře (např. Kupé 3).",
       "currentRoomID": "sluzebni_oddil"
     },
     "cigarety": {
+      "ID": "cigarety",
       "name": "Cigarety",
       "description": "Platidlo, za které je ochotný mluvit Generál.",
       "currentRoomID": "sluzebni_oddil"
     },
     "knoflik": {
+      "ID": "knoflik",
       "name": "Utržený knoflík",
       "description": "První stopa nalezená na podlaze. Zloděj se zachytil o kufr.",
       "currentRoomID": "kupe1"
     },
     "leky": {
+      "ID": "leky",
       "name": "Uklidňující léky",
       "description": "Léky pro Madam Hruškovou, aby se uklidnila a mohla vypovídat.",
       "currentRoomID": "kupe5"
     },
     "dluh": {
+      "ID": "dluh",
       "name": "Dlužní úpis",
       "description": "Upomínka na obří dluh nalezená pod polštářem. Motiv činu.",
       "currentRoomID": "kupe3"
     },
     "baterka": {
+      "ID": "baterka",
       "name": "Baterka",
       "description": "Nutná pro prohledání temných koutů toalety.",
       "currentRoomID": "sklad"
     },
     "nahrdelnik": {
+      "ID": "nahrdelnik",
       "name": "Diamantový náhrdelník",
       "description": "Vzácný šperk Madam Hruškové nalezený v nádržce toalety.",
       "currentRoomID": "toaleta"

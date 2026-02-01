@@ -1,11 +1,13 @@
 package FileManagerHelper;
 
 public class ItemDTO {
+    private String ID;
     private String name;
     private String description;
     private String currentRoomID;
 
-    public ItemDTO(String name, String description, String currentRoomID) {
+    public ItemDTO(String ID, String name, String description, String currentRoomID) {
+        this.ID = ID;
         this.name = name;
         this.description = description;
         this.currentRoomID = currentRoomID;
@@ -21,5 +23,9 @@ public class ItemDTO {
 
     public String getCurrentRoomID() {
         return currentRoomID;
+    }
+
+    public String getID() {
+        return ID;
     }
 }

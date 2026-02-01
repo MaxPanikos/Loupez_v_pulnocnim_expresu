@@ -35,6 +35,15 @@ public class Player extends Character{
         return null;
     }
 
+    public Item getInventoryItem (String name) {
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i] != null && inventory[i].getID().equals(name)) {
+                return inventory[i];
+            }
+        }
+        return null;
+    }
+
     public boolean grabItem (Item item) {
         if (currentRoom.getItems().containsKey(item.getName()) && unusedPockets() > 0) {
             for (int i = 0; i < inventory.length; i++) {

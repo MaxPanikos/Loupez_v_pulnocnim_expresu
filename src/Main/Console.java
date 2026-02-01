@@ -32,6 +32,7 @@ public class Console {
         commands.put("prohledej", new Explore(world));
         commands.put("zeptej", new Ask(world));
         commands.put("obvin", new Accuse(world));
+        commands.put("seber", new Grab(world));
     }
 
     public void game () {

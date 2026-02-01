@@ -1,10 +1,12 @@
 package Items;
 
 public class Item {
+    private String ID;
     private String name;
     private String description;
 
-    public Item(String name, String description) {
+    public Item(String ID, String name, String description) {
+        this.ID = ID;
         this.name = name;
         this.description = description;
     }
@@ -25,10 +27,12 @@ public class Item {
         this.description = description;
     }
 
+    public String getID() {
+        return ID;
+    }
+
     @Override
     public String toString() {
-        return "Item{" +
-                "name='" + name + '\'' +
-                '}';
+        return name + ": " + description;
     }
 }
