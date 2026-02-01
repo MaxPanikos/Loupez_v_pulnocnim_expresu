@@ -40,6 +40,7 @@ public class Console {
         boolean exit = false;
         while (!exit) {
             System.out.println(">> " + world.getPlayer().getCurrentRoom().text());
+            System.out.println(">> " + world.getPlayer().inventory());
             System.out.print(">> ");
             String input = sc.nextLine();
             String[] command = input.split(" ", 2);

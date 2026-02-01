@@ -13,8 +13,10 @@ public class Grab implements Command {
     public String execute(String command) throws Exception {
         Item item = world.getPlayer().getCurrentRoom().getItems().get(command);
         if (item != null) {
-            world.getPlayer().grabItem(item);
-            return "Predmet " +  item.getName() + " byl sebran a strcen do kapsy.";
+            if (world.getPlayer().grabItem(item)) {
+                return "Predmet " +  item.getName() + " byl sebran a strcen do kapsy.";
+            }
+            throw new Exception("Predmet se nepodarilo sebrat!");
         }
         throw new Exception("Tento predmet se nenachazi v teto mistnosti!");
     }

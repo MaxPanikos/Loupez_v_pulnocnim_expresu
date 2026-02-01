@@ -23,9 +23,9 @@ public class Explore implements Command {
                 int i = 0;
                 for (Item item : items.values()) {
                     if (i == items.size()-1) {
-                        roomItems += item.getName() + " - " + item.getDescription();
+                        roomItems += item.getID() + " - " + item.getDescription();
                     } else {
-                        roomItems += item.getName() + " - " + item.getDescription() + ", ";
+                        roomItems += item.getID() + " - " + item.getDescription() + ", ";
                         i++;
                     }
                 }

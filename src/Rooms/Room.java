@@ -115,8 +115,8 @@ public class Room {
     }
 
     public boolean addItem(Item item) {
-        if (!items.containsKey(item.getName())) {
-            items.put(item.getName(), item);
+        if (!items.containsKey(item.getID())) {
+            items.put(item.getID(), item);
             return true;
         }
         return false;

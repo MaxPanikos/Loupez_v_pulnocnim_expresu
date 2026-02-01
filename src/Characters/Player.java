@@ -45,11 +45,11 @@ public class Player extends Character{
     }
 
     public boolean grabItem (Item item) {
-        if (currentRoom.getItems().containsKey(item.getName()) && unusedPockets() > 0) {
+        if (currentRoom.getItems().containsKey(item.getID())) {
             for (int i = 0; i < inventory.length; i++) {
                 if (inventory[i] == null) {
                     inventory[i] = item;
-                    currentRoom.getItems().remove(item.getName());
+                    currentRoom.getItems().remove(item.getID());
                     return true;
                 }
             }
@@ -86,5 +86,23 @@ public class Player extends Character{
                 "inventory=" + Arrays.toString(inventory) +
                 ", currentRoom=" + currentRoom +
                 '}';
+    }
+
+    public String inventory () {
+        String inventoryString = "Inventar: ";
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i] != null) {
+                inventoryString += i + ". - " + inventory[i].getID();
+                if (i < inventory.length - 1) {
+                    inventoryString += ", ";
+                }
+            } else {
+                inventoryString += i + ". - nic";
+                if (i < inventory.length - 1) {
+                    inventoryString += ", ";
+                }
+            }
+        }
+        return inventoryString;
     }
 }
