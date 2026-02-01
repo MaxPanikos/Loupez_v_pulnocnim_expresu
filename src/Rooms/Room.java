@@ -25,21 +25,32 @@ public class Room {
 
     public String text () {
         String head = "Jsi v mistnostni " + name + "\n" + description;
-        String npcsString;
+        String npcsString = "Lide v mistnosti: ";
         if (npcs.isEmpty()) {
-            npcsString = "Zadni lide.";
+            npcsString += "Zadni lide.";
         } else {
-            npcsString = npcs.toString();
+            int i = 0;
+            for (NPC npc : npcs.values()) {
+                if (i == npcs.size()-1) {
+                    npcsString += npc.getName();
+                } else {
+                    npcsString += npc.getName() + ", ";
+                    i++;
+                }
+            }
         }
-        String roomItems;
-        if (items.isEmpty()) {
-            roomItems = "Zadne predmety k sebrani.";
-        } else {
-            roomItems = items.toString();
+        String roomRooms = "Z teto mistnosti muzeto do (" + rooms.size() + "): ";
+        int i = 0;
+        for (Room room : rooms.values()) {
+            if (i == rooms.size()-1) {
+                roomRooms += room.getName();
+            } else {
+                roomRooms += room.getName() + ", ";
+                i++;
+            }
         }
-        String roomRooms = "Z teto mistnosti muzeto do: " + rooms;
 
-        return head + "\n" + npcsString + "\n" + roomItems + "\n" + roomRooms;
+        return head + "\n" + npcsString + "\n" + roomRooms;
     }
 
     public boolean addNPC(NPC npc) {
