@@ -31,7 +31,7 @@ public class NPC extends Character{
     }
 
     public String accuse () {
-        return "";
+        return "Nemate dukazy a ja to opravdu nejsem!";
     }
 
     public String getName() {

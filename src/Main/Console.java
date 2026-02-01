@@ -33,6 +33,8 @@ public class Console {
         commands.put("zeptej", new Ask(world));
         commands.put("obvin", new Accuse(world));
         commands.put("seber", new Grab(world));
+        commands.put("odhod", new Discard(world));
+        commands.put("jdi", new Move(world));
     }
 
     public void game () {
@@ -42,19 +44,24 @@ public class Console {
         boolean exit = false;
         while (!exit) {
             System.out.println(world.getPlayer().getCurrentRoom().text());
-            String input = sc.next();
+            System.out.print(">> ");
+            String input = sc.nextLine();
             String[] command = input.split(" ", 2);
             String commandType = command[0].trim().toLowerCase();
             if (commands.containsKey(commandType)) {
                 Command c = commands.get(commandType);
                 try {
-                    System.out.println(c.execute(command[1]));
+                    if (command.length == 1) {
+                        System.out.println(c.execute(""));
+                    } else {
+                        System.out.println(c.execute(command[1]));
+                    }
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
+                    System.err.println(e.getMessage());
                 }
                 exit = c.exit();
             } else {
-                System.err.println("Tento prikaz neznam! (help pro napovedu)");
+                System.err.println("Tento prikaz neznam! ('pomoc' pro napovedu)");
             }
             System.out.println();
         }

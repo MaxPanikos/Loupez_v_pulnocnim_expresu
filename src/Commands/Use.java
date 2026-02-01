@@ -10,4 +10,9 @@ public class Use implements Command {
     public boolean exit() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Pouzit: pouzij <predmet v inventari>";
+    }
 }

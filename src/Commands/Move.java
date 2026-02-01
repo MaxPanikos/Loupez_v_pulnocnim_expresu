@@ -24,4 +24,9 @@ public class Move implements Command{
     public boolean exit() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Chodit: jdi <nazev mistnosti>";
+    }
 }

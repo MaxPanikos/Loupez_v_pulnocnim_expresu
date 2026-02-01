@@ -19,6 +19,14 @@ public class Thief extends NPC{
         return false;
     }
 
+    @Override
+    public String accuse () {
+        if (compareLists(proofs, proofs)) {
+            return "No dobre jsem to ja.";
+        }
+        return "Nejsem to ja a ani nemate dukazy.";
+    }
+
     private boolean compareLists (ArrayList<String> list1, ArrayList<String> list2) {
         if (list1.size() != list2.size()) {
             return false;

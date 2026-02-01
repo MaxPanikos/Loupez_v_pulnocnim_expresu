@@ -22,4 +22,9 @@ public class Explore implements Command {
     public boolean exit() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Prohledat: prohledej";
+    }
 }

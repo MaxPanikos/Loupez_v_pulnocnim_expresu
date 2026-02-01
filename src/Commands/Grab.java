@@ -23,4 +23,9 @@ public class Grab implements Command {
     public boolean exit() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Vzit: seber <item v mistnosti>";
+    }
 }

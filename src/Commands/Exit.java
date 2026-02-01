@@ -10,4 +10,9 @@ public class Exit implements Command {
     public boolean exit() {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Opustit hru: konec";
+    }
 }
