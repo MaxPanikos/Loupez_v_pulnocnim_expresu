@@ -12,6 +12,7 @@ public class Move implements Command{
 
     @Override
     public String execute(String command) throws Exception {
+        command = command.trim().toLowerCase();
         Room room = world.getRooms().get(command);
         if (room != null) {
             world.getPlayer().move(room);

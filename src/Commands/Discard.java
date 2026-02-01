@@ -12,7 +12,8 @@ public class Discard implements Command {
 
     @Override
     public String execute(String command) throws Exception {
-        Item item = world.getPlayer().getInventoryItem(command.trim().toLowerCase());
+        command = command.trim().toLowerCase();
+        Item item = world.getPlayer().getInventoryItem(command);
         if (item != null && world.getPlayer().throwAwayItem(item)) {
             return "Predmet " + item.getName() + " byl odlozen.";
         }

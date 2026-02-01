@@ -10,6 +10,7 @@ public class Ask implements Command {
 
     @Override
     public String execute(String command) throws Exception{
+        command = command.trim().toLowerCase();
         if (world.getPlayer().getCurrentRoom().getNpcs().containsKey(command)) {
             return world.getPlayer().getCurrentRoom().getNpcs().get(command).ask();
         }

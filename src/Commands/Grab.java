@@ -11,6 +11,7 @@ public class Grab implements Command {
     }
     @Override
     public String execute(String command) throws Exception {
+        command = command.trim().toLowerCase();
         Item item = world.getPlayer().getCurrentRoom().getItems().get(command);
         if (item != null) {
             if (world.getPlayer().grabItem(item)) {
