@@ -3,14 +3,17 @@ package Characters;
 import Items.Item;
 import Rooms.Room;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Player extends Character{
     private Item[] inventory;
+    private ArrayList<String> proofs;
 
     public Player(Room startingRoom){
         super(startingRoom);
-        inventory = new Item[2];
+        this.inventory = new Item[2];
+        this.proofs = new ArrayList<>();
     }
 
     private int unusedPockets () {
@@ -62,6 +65,10 @@ public class Player extends Character{
             return true;
         }
         return false;
+    }
+
+    public ArrayList<String> getProofs() {
+        return proofs;
     }
 
     @Override

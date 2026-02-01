@@ -30,8 +30,8 @@ public class NPC extends Character{
         return "";
     }
 
-    public boolean accuse () {
-        return false;
+    public String accuse () {
+        return "";
     }
 
     public String getName() {
