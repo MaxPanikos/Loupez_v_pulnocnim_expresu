@@ -6,12 +6,14 @@ public class NPC extends Character{
     private String ID;
     private String name;
     private int age;
+    private String ask;
 
     public NPC(String ID, String name, int age, Room currentRoom) {
         super(currentRoom);
         this.ID = ID;
         this.name = name;
         this.age = age;
+        this.ask = "Nemam ti co rict.";
     }
 
     public boolean move (Room newRoom) {
@@ -27,7 +29,11 @@ public class NPC extends Character{
     }
 
     public String ask () {
-        return "";
+        return ask;
+    }
+
+    public void setAsk(String ask) {
+        this.ask = ask;
     }
 
     public String accuse () {

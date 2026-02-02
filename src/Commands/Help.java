@@ -12,8 +12,13 @@ public class Help implements Command {
     public String execute(String command) {
         StringBuilder str = new StringBuilder();
         str.append("Vsechny prikazy: ");
+        int i = 0;
         for (Command c : commands.values()) {
-            str.append(c + ", ");
+            str.append(c);
+            i++;
+            if (i < commands.size()-1) {
+                str.append(", ");
+            }
         }
         return str.toString();
     }
