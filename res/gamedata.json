@@ -62,12 +62,6 @@
       "age": 35,
       "currentRoomID": "kupe2"
     },
-    "filip": {
-      "ID": "filip",
-      "name": "Student Filip",
-      "age": 22,
-      "currentRoomID": "kupe3"
-    },
     "general": {
       "ID": "general",
       "name": "Mrzutý Generál",
@@ -171,5 +165,14 @@
       ]
     }
   },
-  "startingRoomID": "sluzebni_oddil"
+  "startingRoomID": "sluzebni_oddil",
+  "thief": {
+    "ID": "filip",
+    "name": "Student Filip",
+    "age": 22,
+    "currentRoomID": "kupe3",
+    "proofs": [
+      "nahrdelnik"
+    ]
+  }
 }

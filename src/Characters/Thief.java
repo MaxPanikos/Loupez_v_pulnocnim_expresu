@@ -20,8 +20,8 @@ public class Thief extends NPC{
     }
 
     @Override
-    public String accuse () {
-        if (compareLists(proofs, proofs)) {
+    public String accuse (ArrayList<String> playerProofs) {
+        if (compareLists(proofs, playerProofs)) {
             return "No dobre jsem to ja.";
         }
         return "Nejsem to ja a ani nemate dukazy.";

@@ -1,10 +1,10 @@
 package FileManagerHelper;
 
 public class NPCDTO {
-    private String ID;
-    private String name;
-    private int age;
-    private String currentRoomID;
+    protected String ID;
+    protected String name;
+    protected int age;
+    protected String currentRoomID;
 
     public NPCDTO(String ID, String name, int age, String currentRoom) {
         this.ID = ID;

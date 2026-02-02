@@ -2,6 +2,7 @@ package FileManagerHelper;
 
 import Characters.NPC;
 import Characters.Player;
+import Characters.Thief;
 import Items.Item;
 import Main.World;
 import Rooms.Room;
@@ -23,6 +24,7 @@ public class FileManager {
     private Map<String, RoomDTO> rooms;
     private Map<String, NPCDTO> npcs;
     private String startingRoomID;
+    private ThiefDTO thief;
 
     /**
      * Načte data z JSON souboru.
@@ -32,8 +34,7 @@ public class FileManager {
 
         try (InputStream is = FileManager.class.getResourceAsStream(resourcePath)) {
             if (is == null) {
-                throw new IllegalStateException("Nenalezen resource: " + resourcePath +
-                        " (Zkuste přidat '/' na začátek cesty, např: /GameData.json)");
+                throw new IllegalStateException("Nenalezen resource: " + resourcePath);
             }
 
             return gson.fromJson(
@@ -72,8 +73,14 @@ public class FileManager {
             for (NPCDTO npcDto : npcs.values()) {
                 String roomId = npcDto.getCurrentRoomID();
                 if (worldMap.containsKey(roomId)) {
-                    worldMap.get(roomId).spawnNPC(new NPC(npcDto.getID(), npcDto.getName(), npcDto.getAge(), worldMap.get(roomId)
-                    ));
+                    worldMap.get(roomId).spawnNPC(new NPC(npcDto.getID(), npcDto.getName(), npcDto.getAge(), worldMap.get(roomId)));
+                }
+            }
+
+            if (thief != null) {
+                String roomId = thief.getCurrentRoomID();
+                if (worldMap.containsKey(roomId)) {
+                    worldMap.get(roomId).spawnNPC(new Thief(thief.getID(), thief.getName(), thief.getAge(), worldMap.get(roomId), (ArrayList<String>) thief.getProofs()));
                 }
             }
 
@@ -101,7 +108,9 @@ public class FileManager {
                 }
             }
 
-            return new World(worldMap, new Player(startingRoomObj));
+            World world = new World(worldMap, new Player(startingRoomObj));
+
+            return world;
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("Chyba při konverzi DTO na herní objekty: " + e.getMessage());

@@ -15,8 +15,10 @@ public class Move implements Command{
         command = command.trim().toLowerCase();
         Room room = world.getRooms().get(command);
         if (room != null) {
-            world.getPlayer().move(room);
-            return "Hrac byl presunut do " + room.getName();
+            if (world.getPlayer().move(room)) {
+                return "Hrac byl presunut do " + room.getName();
+            }
+            throw new Exception("Do teto mistnosti se neda jit z mistnosti kde se nachazite!");
         }
         throw new Exception("Tato mistnost neexistuje!");
     }

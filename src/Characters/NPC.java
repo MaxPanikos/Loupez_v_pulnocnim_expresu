@@ -2,6 +2,8 @@ package Characters;
 
 import Rooms.Room;
 
+import java.util.ArrayList;
+
 public class NPC extends Character{
     private String ID;
     private String name;
@@ -36,7 +38,7 @@ public class NPC extends Character{
         this.ask = ask;
     }
 
-    public String accuse () {
+    public String accuse (ArrayList<String> playerProofs) {
         return name + ": Nemate dukazy a ja to opravdu nejsem!";
     }
 

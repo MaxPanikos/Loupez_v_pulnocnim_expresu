@@ -7,6 +7,7 @@ public class GameDataDTO {
     private Map<String, NPCDTO> npcs;
     private Map<String, RoomDTO> rooms;
     private String startingRoomID;
+    private ThiefDTO thief;
 
     public Map<String, ItemDTO> getItems() {
         return items;
@@ -22,5 +23,9 @@ public class GameDataDTO {
 
     public String getStartingRoomID() {
         return startingRoomID;
+    }
+
+    public ThiefDTO getThief() {
+        return thief;
     }
 }
