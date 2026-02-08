@@ -28,6 +28,21 @@ public class Grab implements Command {
     }
 
     @Override
+    public String text() {
+        return "";
+    }
+
+    @Override
+    public boolean hasText() {
+        return false;
+    }
+
+    @Override
+    public boolean nextScanner() {
+        return false;
+    }
+
+    @Override
     public String toString() {
         return "Vzit: seber <item v mistnosti>";
     }

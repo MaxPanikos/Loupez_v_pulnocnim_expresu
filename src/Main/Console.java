@@ -3,16 +3,19 @@ package Main;
 import Commands.*;
 import FileManagerHelper.FileManager;
 
+import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class Console {
-    private HashMap<String, Command> commands;
+    private HashMap<String, Command> gameCommands;
+    private HashMap<String, Command> menuCommands;
     private World world;
     private Scanner sc;
 
     public Console() {
-        this.commands = new HashMap<>();
+        this.gameCommands = new HashMap<>();
+        this.menuCommands = new HashMap<>();
         this.world = null;
         this.sc = new Scanner(System.in);
         FileManager fileManager = FileManager.loadData("/gamedata.json");
@@ -23,20 +26,55 @@ public class Console {
         }
         System.out.println("Pocet nactenych mistnosti: " + world.getRooms().size());
         System.out.println();
-        commands.put("konec", new Exit());
-        commands.put("pomoc", new Help(commands));
-        commands.put("prohledej", new Explore(world));
-        commands.put("zeptej", new Ask(world));
-        commands.put("obvin", new Accuse(world));
-        commands.put("seber", new Grab(world));
-        commands.put("odhod", new Discard(world ));
-        commands.put("jdi", new Move(world));
+        gameCommands.put("konec", new Exit());
+        gameCommands.put("pomoc", new Help(gameCommands));
+        gameCommands.put("prohledej", new Explore(world));
+        gameCommands.put("zeptej", new Ask(world));
+        gameCommands.put("obvin", new Accuse(world));
+        gameCommands.put("seber", new Grab(world));
+        gameCommands.put("odhod", new Discard(world ));
+        gameCommands.put("jdi", new Move(world));
+        gameCommands.put("ulozit", new Save(world));
+
+        menuCommands.put("konec", new Exit());
+        menuCommands.put("pomoc", new Help(menuCommands));
+        menuCommands.put("nova hra", new NewGame(this));
+        menuCommands.put("nacist hru", new LoadGame(this));
     }
 
     public void menu () {
-        boolean menu = true;
-        while (menu) {
-            System.out.println("Loupez v pulnocnim expresu");
+        boolean exit = false;
+        while (!exit) {
+            System.out.println(Colors.YELLOW + "Loupez v pulnocnim expresu" + Colors.RESET);
+            System.out.println("Napiste co chcete udelat:");
+            System.out.println(Colors.GREEN + "nova hra" + Colors.RESET + " - Vytvorit novou hru.");
+            System.out.println(Colors.GREEN + "nacist hru" + Colors.RESET + " - Nacist ulozenou hru.");
+            System.out.println(Colors.GREEN + "konec" + Colors.RESET + " - Vytvorit novou hru.");
+            System.out.print(">> ");
+            String input = sc.nextLine();
+            String commandType = input.toLowerCase();
+            if (menuCommands.containsKey(commandType)) {
+                Command c = menuCommands.get(commandType);
+                try {
+                    if (c.hasText()) {
+                        System.out.println(">> " + c.text());
+                        if (c.nextScanner()) {
+                            input = sc.nextLine();
+                            System.out.println(">> " + c.execute(input.toLowerCase()));
+                        } else {
+                            System.out.println(">> " + c.execute(""));;
+                        }
+                    } else {
+                        System.out.println(">> " + c.execute(""));
+                    }
+                } catch (Exception e) {
+                    System.err.println(">> " + e.getMessage());
+                }
+                exit = c.exit();
+            } else {
+                System.err.println(">> Tento prikaz neznam! ('pomoc' pro napovedu)");
+            }
+            System.out.println();
         }
     }
 
@@ -52,8 +90,8 @@ public class Console {
             String input = sc.nextLine();
             String[] command = input.split(" ", 2);
             String commandType = command[0].trim().toLowerCase();
-            if (commands.containsKey(commandType)) {
-                Command c = commands.get(commandType);
+            if (gameCommands.containsKey(commandType)) {
+                Command c = gameCommands.get(commandType);
                 try {
                     if (command.length == 1) {
                         System.out.println(">> " + c.execute(""));
