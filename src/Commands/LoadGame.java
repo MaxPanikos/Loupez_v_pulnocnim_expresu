@@ -33,4 +33,9 @@ public class LoadGame implements Command {
     public boolean exit() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Nacist hru: nacist hru";
+    }
 }

@@ -7,7 +7,10 @@ import Items.Item;
 import Main.World;
 import Rooms.Room;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -115,5 +118,9 @@ public class FileManager {
             e.printStackTrace();
             throw new Exception("Chyba při konverzi DTO na herní objekty: " + e.getMessage());
         }
+    }
+
+    public static void save (World world, String resourcePath) throws Exception{
+
     }
 }

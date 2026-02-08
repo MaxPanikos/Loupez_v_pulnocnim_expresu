@@ -1,6 +1,9 @@
 package Commands;
 
+import FileManagerHelper.FileManager;
 import Main.World;
+
+import java.io.File;
 
 public class Save implements Command {
     private World world;
@@ -11,6 +14,7 @@ public class Save implements Command {
 
     @Override
     public String execute(String command) throws Exception {
+        FileManager.save(world, "saves.csv");
         return "Hra se ulozila.";
     }
 
