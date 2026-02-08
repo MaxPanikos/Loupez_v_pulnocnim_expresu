@@ -33,6 +33,13 @@ public class Console {
         commands.put("jdi", new Move(world));
     }
 
+    public void menu () {
+        boolean menu = true;
+        while (menu) {
+            System.out.println("Loupez v pulnocnim expresu");
+        }
+    }
+
     public void game () {
         if (world.getPlayer().getCurrentRoom() == null) {
             return;
