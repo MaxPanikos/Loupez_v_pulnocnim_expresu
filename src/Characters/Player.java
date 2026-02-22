@@ -68,6 +68,15 @@ public class Player extends Character{
         return false;
     }
 
+    public boolean removeItem (Item item) {
+        Integer check = checkInventory(item);
+        if (check != null) {
+            inventory[check] = null;
+            return true;
+        }
+        return false;
+    }
+
     public boolean move (Room newRoom) throws Exception{
         if (currentRoom.getRooms().containsKey(newRoom.getID())) {
             if (newRoom.getUnlocks() != null && checkInventory(newRoom.getUnlocks()) == null) {

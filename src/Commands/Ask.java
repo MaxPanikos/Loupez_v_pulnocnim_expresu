@@ -14,7 +14,11 @@ public class Ask implements Command {
         command = command.trim().toLowerCase();
         if (world.getPlayer().getCurrentRoom().getNpcs().containsKey(command)) {
             NPC npc = world.getPlayer().getCurrentRoom().getNpcs().get(command);
-            return npc.getName() +": " + npc.ask();
+            if (npc.isWasItemGiven()) {
+                return npc.getAfterItemDialogue();
+            } else {
+                return npc.getBasicDialogue();
+            }
         }
         throw new Exception("Tato osoba se nenachazi v teto mistnosti!");
     }

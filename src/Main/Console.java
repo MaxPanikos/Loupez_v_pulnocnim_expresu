@@ -36,6 +36,7 @@ public class Console {
         gameCommands.put("jdi", new Move(world));
         gameCommands.put("ulozit", new Save(world));
         gameCommands.put("prohledni", new Inspect(world));
+        gameCommands.put("podej", new Give(world));
 
         menuCommands.put("konec", new Exit());
         menuCommands.put("pomoc", new Help(menuCommands));

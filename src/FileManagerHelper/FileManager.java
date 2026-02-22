@@ -89,14 +89,19 @@ public class FileManager {
             for (NPCDTO npcDto : npcs.values()) {
                 String roomId = npcDto.getCurrentRoomID();
                 if (worldMap.containsKey(roomId)) {
-                    worldMap.get(roomId).spawnNPC(new NPC(npcDto.getID(), npcDto.getName(), npcDto.getAge(), worldMap.get(roomId)));
+                    if (npcDto.getItemForDialogue() != null) {
+                        Item itemForDialogue = itemMap.get(npcDto.getItemForDialogue());
+                        worldMap.get(roomId).spawnNPC(new NPC(worldMap.get(roomId), npcDto.getID(), npcDto.getName(), npcDto.getAge(), npcDto.getBasicDialogue(), itemForDialogue, npcDto.getAfterItemDialogue()));
+                    } else {
+                        worldMap.get(roomId).spawnNPC(new NPC(npcDto.getID(), npcDto.getName(), npcDto.getAge(), worldMap.get(roomId), npcDto.getBasicDialogue()));
+                    }
                 }
             }
 
             if (thief != null) {
                 String roomId = thief.getCurrentRoomID();
                 if (worldMap.containsKey(roomId)) {
-                    worldMap.get(roomId).spawnNPC(new Thief(thief.getID(), thief.getName(), thief.getAge(), worldMap.get(roomId), (ArrayList<String>) thief.getProofs()));
+                    worldMap.get(roomId).spawnNPC(new Thief(thief.getID(), thief.getName(), thief.getAge(), worldMap.get(roomId), (ArrayList<String>) thief.getProofs(), thief.getBasicDialogue(), thief.getAfterCaughtDialogue()));
                 }
             }
 

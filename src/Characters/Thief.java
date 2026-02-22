@@ -7,9 +7,11 @@ import java.util.Collections;
 
 public class Thief extends NPC{
     private ArrayList<String> proofs;
-    public Thief(String ID, String name, int age, Room currentRoom, ArrayList<String> proofs) {
-        super(ID, name, age, currentRoom);
+    private String afterCaughtDialogue;
+    public Thief(String ID, String name, int age, Room currentRoom, ArrayList<String> proofs, String basicDialogue, String afterCaughtDialogue) {
+        super(ID, name, age, currentRoom, basicDialogue);
         this.proofs = proofs;
+        this.afterCaughtDialogue = afterCaughtDialogue;
     }
 
     public boolean accuseTest (ArrayList<String> playerProofs) {
@@ -22,7 +24,7 @@ public class Thief extends NPC{
     @Override
     public String accuse (ArrayList<String> playerProofs) {
         if (compareLists(proofs, playerProofs)) {
-            return "No dobre jsem to ja.";
+            return afterCaughtDialogue;
         }
         return "Nejsem to ja a ani nemate dukazy...";
     }

@@ -1,21 +1,39 @@
 package Characters;
 
+import Items.Item;
 import Rooms.Room;
 
 import java.util.ArrayList;
 
 public class NPC extends Character{
-    private String ID;
-    private String name;
-    private int age;
-    private String ask;
+    protected String ID;
+    protected String name;
+    protected int age;
+    protected String basicDialogue;
+    protected Item itemForDialogue;
+    protected boolean wasItemGiven;
+    protected String afterItemDialogue;
 
-    public NPC(String ID, String name, int age, Room currentRoom) {
+    public NPC(String ID, String name, int age, Room currentRoom, String basicDialogue) {
         super(currentRoom);
         this.ID = ID;
         this.name = name;
         this.age = age;
-        this.ask = "Nemam ti co rict.";
+        this.basicDialogue = basicDialogue;
+        this.itemForDialogue = null;
+        this.afterItemDialogue = null;
+        this.wasItemGiven = false;
+    }
+
+    public NPC(Room currentRoom, String ID, String name, int age, String basicDialogue, Item itemForDialogue, String afterItemDialogue) {
+        super(currentRoom);
+        this.ID = ID;
+        this.name = name;
+        this.age = age;
+        this.basicDialogue = basicDialogue;
+        this.itemForDialogue = itemForDialogue;
+        this.afterItemDialogue = afterItemDialogue;
+        this.wasItemGiven = false;
     }
 
     public boolean move (Room newRoom) {
@@ -28,14 +46,6 @@ public class NPC extends Character{
             return true;
         }
         return false;
-    }
-
-    public String ask () {
-        return ask;
-    }
-
-    public void setAsk(String ask) {
-        this.ask = ask;
     }
 
     public String accuse (ArrayList<String> playerProofs) {
@@ -52,6 +62,26 @@ public class NPC extends Character{
 
     public String getID() {
         return ID;
+    }
+
+    public String getBasicDialogue() {
+        return basicDialogue;
+    }
+
+    public Item getItemForDialogue() {
+        return itemForDialogue;
+    }
+
+    public String getAfterItemDialogue() {
+        return afterItemDialogue;
+    }
+
+    public boolean isWasItemGiven() {
+        return wasItemGiven;
+    }
+
+    public void setWasItemGiven(boolean wasItemGiven) {
+        this.wasItemGiven = wasItemGiven;
     }
 
     @Override

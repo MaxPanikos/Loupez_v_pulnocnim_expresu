@@ -49,25 +49,33 @@
       "ID": "lojza",
       "name": "Kolega Lojza",
       "age": 45,
-      "currentRoomID": "sluzebni_oddil"
+      "currentRoomID": "sluzebni_oddil",
+      "basicDialogue": "Chrr... Karle? Co blázníš, venku je vánice, nikam se nejede. Nech mě ještě chvíli chrápat..."
     },
     "hruskova": {
       "ID": "hruskova",
       "name": "Madam Hrušková",
       "age": 50,
-      "currentRoomID": "kupe1"
+      "currentRoomID": "kupe1",
+      "basicDialogue": "(Vzlyká a lapá po dechu) Můj náhrdelník... pryč! Ten šarlatán odvedle... já to věděla!",
+      "itemForDialogue": "leky",
+      "afterItemDialogue": "Už je mi lépe. Ukradli ho v noci. Určitě to byl ten Kouzelník z vedlejšího kupé!"
     },
     "kouzelnik": {
       "ID": "kouzelnik",
       "name": "Podezřelý Kouzelník",
       "age": 35,
-      "currentRoomID": "kupe2"
+      "currentRoomID": "kupe2",
+      "basicDialogue": "Slyšel jsem ten povyk. Madam Hrušková je v šoku. Tady máte uklidňující léky, podejte jí je."
     },
     "general": {
       "ID": "general",
       "name": "Mrzutý Generál",
       "age": 65,
-      "currentRoomID": "kupe4"
+      "currentRoomID": "kupe4",
+      "basicDialogue": "Voják ve výslužbě potřebuje svůj klid. Zmizte, pokud nemáte něco k kouření.",
+      "itemForDialogue": "cigarety",
+      "afterItemDialogue": "Viděl jsem toho studenta Filipa, jak běžel k toaletám. V ruce svíral něco lesklého."
     },
     "doktor": {
       "ID": "doktor",
@@ -177,6 +185,8 @@
       "nahrdelnik",
       "knoflik",
       "dluh"
-    ]
+    ],
+    "basicDialogue": "Jen si tu čtu... stalo se něco? Ten svetr? Jen se mi o něco zachytil, nic víc.",
+    "afterCaughtDialogue": "Já ty peníze potřeboval! Kdybyste věděl, co mi hrozí za dluhy... Pusťte mě!"
   }
 }
