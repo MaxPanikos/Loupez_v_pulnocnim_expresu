@@ -16,7 +16,10 @@ public class Accuse implements Command {
         command = command.trim().toLowerCase();
         NPC npc = world.getPlayer().getCurrentRoom().getNpcs().get(command);
         if (npc != null) {
-            return npc.accuse(world.getPlayer().getProofs());
+            if (npc.accuseTest(world.getPlayer().getProofs())) {
+                this.world.setGameOver(true);
+                return npc.accuse(world.getPlayer().getProofs());
+            }
         }
         throw new Exception("Tato osoba se nenachazi v teto mistnosti!");
     }

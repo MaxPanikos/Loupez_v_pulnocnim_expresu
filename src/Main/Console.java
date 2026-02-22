@@ -3,6 +3,7 @@ package Main;
 import Commands.*;
 import FileManagerHelper.FileManager;
 
+import javax.swing.plaf.ColorUIResource;
 import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -86,28 +87,40 @@ public class Console {
         }
         boolean exit = false;
         while (!exit) {
-            System.out.println(">> " + world.getPlayer().getCurrentRoom().text());
-            System.out.println(">> " + world.getPlayer().inventory());
-            System.out.print(">> ");
-            String input = sc.nextLine();
-            String[] command = input.split(" ", 2);
-            String commandType = command[0].trim().toLowerCase();
-            if (gameCommands.containsKey(commandType)) {
-                Command c = gameCommands.get(commandType);
-                try {
-                    if (command.length == 1) {
-                        System.out.println(">> " + c.execute(""));
-                    } else {
-                        System.out.println(">> " + c.execute(command[1]));
+            if (!world.isGameOver() && !(world.getTimeLeft() <= 0)) {
+                System.out.println(">> Zbyva minut: " + world.getTimeLeft());
+                System.out.println(">> " + world.getPlayer().getCurrentRoom().text());
+                System.out.println(">> " + world.getPlayer().inventory());
+                System.out.print(">> ");
+                String input = sc.nextLine();
+                String[] command = input.split(" ", 2);
+                String commandType = command[0].trim().toLowerCase();
+                if (gameCommands.containsKey(commandType)) {
+                    Command c = gameCommands.get(commandType);
+                    try {
+                        if (command.length == 1) {
+                            System.out.println(">> " + c.execute(""));
+                        } else {
+                            System.out.println(">> " + c.execute(command[1]));
+                        }
+                    } catch (Exception e) {
+                        System.err.println(">> " + e.getMessage());
                     }
-                } catch (Exception e) {
-                    System.err.println(">> " + e.getMessage());
+                    exit = c.exit();
+                } else {
+                    System.err.println(">> Tento prikaz neznam! ('pomoc' pro napovedu)");
                 }
-                exit = c.exit();
+                System.out.println();
             } else {
-                System.err.println(">> Tento prikaz neznam! ('pomoc' pro napovedu)");
+                if (world.isGameOver()) {
+                    System.out.println(Colors.GREEN + "Hrac vyhral. Dopadl zlodeje a zadrzel ho!" + Colors.RESET);
+                } else if (world.getTimeLeft() <= 0) {
+                    System.out.println(Colors.YELLOW + "Hrac nestihl zlodeje chytit v cas a uprchl!" + Colors.RESET);
+                } else {
+                    System.out.println(Colors.RED + "Nastala neocekava chyba. Posilam vas do menu!" + Colors.RESET);
+                }
+                menu();
             }
-            System.out.println();
         }
     }
 }

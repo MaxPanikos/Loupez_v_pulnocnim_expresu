@@ -40,7 +40,7 @@ public class Room {
                 }
             }
         }
-        String roomRooms = "Z teto mistnosti muzeto do (" + rooms.size() + "): ";
+        String roomRooms = "Z teto mistnosti muzete do (" + rooms.size() + "): ";
         int i = 0;
         for (Room room : rooms.values()) {
             if (i == rooms.size()-1) {

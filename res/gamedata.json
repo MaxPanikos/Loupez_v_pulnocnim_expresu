@@ -176,6 +176,7 @@
     }
   },
   "startingRoomID": "sluzebni_oddil",
+  "minutesLeft": 180,
   "thief": {
     "ID": "filip",
     "name": "Student Filip",

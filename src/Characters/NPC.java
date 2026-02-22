@@ -48,6 +48,10 @@ public class NPC extends Character{
         return false;
     }
 
+    public boolean accuseTest (ArrayList<String> playerProofs) {
+        return false;
+    }
+
     public String accuse (ArrayList<String> playerProofs) {
         return name + ": Nemate dukazy a ja to opravdu nejsem!";
     }

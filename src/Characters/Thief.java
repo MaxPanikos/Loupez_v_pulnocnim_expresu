@@ -1,5 +1,6 @@
 package Characters;
 
+import Main.World;
 import Rooms.Room;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class Thief extends NPC{
         if (compareLists(proofs, playerProofs)) {
             return afterCaughtDialogue;
         }
-        return "Nejsem to ja a ani nemate dukazy...";
+        return name + ": Nemate dukazy a ja to opravdu nejsem!";
     }
 
     private boolean compareLists (ArrayList<String> list1, ArrayList<String> list2) {
