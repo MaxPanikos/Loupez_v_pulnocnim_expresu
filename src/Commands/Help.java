@@ -16,7 +16,7 @@ public class Help implements Command {
         for (Command c : commands.values()) {
             str.append(c);
             i++;
-            if (i < commands.size()-1) {
+            if (i < commands.size()) {
                 str.append(", ");
             }
         }

@@ -15,8 +15,10 @@ public class Ask implements Command {
         if (world.getPlayer().getCurrentRoom().getNpcs().containsKey(command)) {
             NPC npc = world.getPlayer().getCurrentRoom().getNpcs().get(command);
             if (npc.isWasItemGiven()) {
+                this.world.setMinutesLeft(this.world.getMinutesLeft() - 1);
                 return npc.getAfterItemDialogue();
             } else {
+                this.world.setMinutesLeft(this.world.getMinutesLeft() - 1);
                 return npc.getBasicDialogue();
             }
         }

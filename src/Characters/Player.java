@@ -79,8 +79,8 @@ public class Player extends Character{
 
     public boolean move (Room newRoom) throws Exception{
         if (currentRoom.getRooms().containsKey(newRoom.getID())) {
-            if (newRoom.getUnlocks() != null && checkInventory(newRoom.getUnlocks()) == null) {
-                throw new Exception("Nemate potrebny predmet ke vstupu do mistnosti (" + newRoom.getUnlocks().getName() + ")!");
+            if (newRoom.isLocked()) {
+                throw new Exception("Mistnost potrebujete nejprve odemknout predmetem (" + newRoom.getUnlocks().getName() + ")!");
             } else {
                 currentRoom = newRoom;
                 return true;

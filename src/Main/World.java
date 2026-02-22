@@ -47,7 +47,7 @@ public class World {
         return gameOver;
     }
 
-    public int getTimeLeft() {
+    public int getMinutesLeft() {
         return minutesLeft;
     }
 

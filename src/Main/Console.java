@@ -35,14 +35,13 @@ public class Console {
         gameCommands.put("seber", new Grab(world));
         gameCommands.put("odhod", new Discard(world ));
         gameCommands.put("jdi", new Move(world));
-        gameCommands.put("ulozit", new Save(world));
         gameCommands.put("prohledni", new Inspect(world));
         gameCommands.put("podej", new Give(world));
+        gameCommands.put("odemkni", new Unlock(world));
 
         menuCommands.put("konec", new Exit());
         menuCommands.put("pomoc", new Help(menuCommands));
         menuCommands.put("nova hra", new NewGame(this));
-        menuCommands.put("nacist hru", new LoadGame(this));
     }
 
     public void menu () {
@@ -87,8 +86,8 @@ public class Console {
         }
         boolean exit = false;
         while (!exit) {
-            if (!world.isGameOver() && !(world.getTimeLeft() <= 0)) {
-                System.out.println(">> Zbyva minut: " + world.getTimeLeft());
+            if (!world.isGameOver() && !(world.getMinutesLeft() <= 0)) {
+                System.out.println(">> Zbyva minut: " + world.getMinutesLeft());
                 System.out.println(">> " + world.getPlayer().getCurrentRoom().text());
                 System.out.println(">> " + world.getPlayer().inventory());
                 System.out.print(">> ");
@@ -114,7 +113,7 @@ public class Console {
             } else {
                 if (world.isGameOver()) {
                     System.out.println(Colors.GREEN + "Hrac vyhral. Dopadl zlodeje a zadrzel ho!" + Colors.RESET);
-                } else if (world.getTimeLeft() <= 0) {
+                } else if (world.getMinutesLeft() <= 0) {
                     System.out.println(Colors.YELLOW + "Hrac nestihl zlodeje chytit v cas a uprchl!" + Colors.RESET);
                 } else {
                     System.out.println(Colors.RED + "Nastala neocekava chyba. Posilam vas do menu!" + Colors.RESET);

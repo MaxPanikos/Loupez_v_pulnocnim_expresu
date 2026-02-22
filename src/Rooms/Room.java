@@ -14,6 +14,7 @@ public class Room {
     private HashMap<String, Item> items;
     private HashMap<String, Room> rooms;
     private Item unlocks;
+    private boolean locked;
 
     public Room(String ID, String name, String description) {
         this.ID = ID;
@@ -22,6 +23,8 @@ public class Room {
         this.npcs = new HashMap<>();
         this.items = new HashMap<>();
         this.rooms = new HashMap<>();
+        this.unlocks = null;
+        this.locked = false;
     }
 
     public String text () {
@@ -129,6 +132,14 @@ public class Room {
             return true;
         }
         return false;
+    }
+
+    public boolean isLocked() {
+        return locked;
+    }
+
+    public void setLocked(boolean locked) {
+        this.locked = locked;
     }
 
     @Override

@@ -38,6 +38,7 @@ public class Explore implements Command {
                     }
                 }
             }
+            this.world.setMinutesLeft(this.world.getMinutesLeft() - 2);
             return roomItems;
         } catch (Exception e) {
             throw new Exception("Nastala neocekavana chyba!");

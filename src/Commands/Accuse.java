@@ -18,6 +18,7 @@ public class Accuse implements Command {
         if (npc != null) {
             if (npc.accuseTest(world.getPlayer().getProofs())) {
                 this.world.setGameOver(true);
+                this.world.setMinutesLeft(this.world.getMinutesLeft() - 1);
                 return npc.accuse(world.getPlayer().getProofs());
             }
         }

@@ -3,43 +3,43 @@
     "klic": {
       "ID": "klic",
       "name": "Generální klíč",
-      "description": "Univerzální klíč, který otevírá zamčené dveře (např. Kupé 3).",
+      "description": "Univerzální klíč ze služebního oddílu, který otevírá všechna kupé.",
       "currentRoomID": "sluzebni_oddil"
     },
     "cigarety": {
       "ID": "cigarety",
       "name": "Cigarety",
-      "description": "Platidlo, za které je ochotný mluvit Generál.",
+      "description": "Krabička cigaret ze služebního oddílu, slouží jako úplatek pro Generála.",
       "currentRoomID": "sluzebni_oddil"
     },
     "knoflik": {
       "ID": "knoflik",
       "name": "Utržený knoflík",
-      "description": "První stopa nalezená na podlaze. Zloděj se zachytil o kufr.",
+      "description": "Černý knoflík nalezený na podlaze v Kupé 1. Zloděj se jím zachytil o kufr.",
       "currentRoomID": "kupe1"
     },
     "leky": {
       "ID": "leky",
       "name": "Uklidňující léky",
-      "description": "Léky pro Madam Hruškovou, aby se uklidnila a mohla vypovídat.",
+      "description": "Léky od doktora pro Madam Hruškovou.",
       "currentRoomID": "kupe5"
     },
     "dluh": {
       "ID": "dluh",
       "name": "Dlužní úpis",
-      "description": "Upomínka na obří dluh nalezená pod polštářem. Motiv činu.",
+      "description": "Důkaz o obřím dluhu studenta Filipa nalezený pod polštářem.",
       "currentRoomID": "kupe3"
     },
     "baterka": {
       "ID": "baterka",
       "name": "Baterka",
-      "description": "Nutná pro prohledání temných koutů toalety.",
+      "description": "Nalezena v kumbálu, nutná k prohledání temné toalety.",
       "currentRoomID": "sklad"
     },
     "nahrdelnik": {
       "ID": "nahrdelnik",
       "name": "Diamantový náhrdelník",
-      "description": "Vzácný šperk Madam Hruškové nalezený v nádržce toalety.",
+      "description": "Vzácný šperk Madam Hruškové ukrytý v nádržce toalety.",
       "currentRoomID": "toaleta",
       "onlyIf": "baterka"
     }
@@ -50,23 +50,23 @@
       "name": "Kolega Lojza",
       "age": 45,
       "currentRoomID": "sluzebni_oddil",
-      "basicDialogue": "Chrr... Karle? Co blázníš, venku je vánice, nikam se nejede. Nech mě ještě chvíli chrápat..."
+      "basicDialogue": "Chrr... Karle? Venku je vánice, nikam se nejede. Nech mě ještě chvíli chrápat..."
     },
     "hruskova": {
       "ID": "hruskova",
       "name": "Madam Hrušková",
       "age": 50,
       "currentRoomID": "kupe1",
-      "basicDialogue": "(Vzlyká a lapá po dechu) Můj náhrdelník... pryč! Ten šarlatán odvedle... já to věděla!",
+      "basicDialogue": "(Vzlyká a lapá po dechu) Můj náhrdelník... pryč! Nedokážu mluvit...",
       "itemForDialogue": "leky",
-      "afterItemDialogue": "Už je mi lépe. Ukradli ho v noci. Určitě to byl ten Kouzelník z vedlejšího kupé!"
+      "afterItemDialogue": "Už je mi lépe. Ukradli ho v noci. Určitě to byl ten Kouzelník odvedle!"
     },
     "kouzelnik": {
       "ID": "kouzelnik",
       "name": "Podezřelý Kouzelník",
       "age": 35,
       "currentRoomID": "kupe2",
-      "basicDialogue": "Slyšel jsem ten povyk. Madam Hrušková je v šoku. Tady máte uklidňující léky, podejte jí je."
+      "basicDialogue": "Já nekradu! Celou noc jsem tu trénoval s kartami, ale viděl jsem na chodbě někoho v pleteném svetru."
     },
     "general": {
       "ID": "general",
@@ -75,104 +75,79 @@
       "currentRoomID": "kupe4",
       "basicDialogue": "Voják ve výslužbě potřebuje svůj klid. Zmizte, pokud nemáte něco k kouření.",
       "itemForDialogue": "cigarety",
-      "afterItemDialogue": "Viděl jsem toho studenta Filipa, jak běžel k toaletám. V ruce svíral něco lesklého."
+      "afterItemDialogue": "Viděl jsem studenta Filipa běžet k toaletám. V ruce svíral něco lesklého."
     },
     "doktor": {
       "ID": "doktor",
       "name": "Starší Lékař",
       "age": 60,
-      "currentRoomID": "kupe5"
+      "currentRoomID": "kupe5",
+      "basicDialogue": "Slyšel jsem ten povyk. Madam Hrušková je v šoku, podejte jí tyto léky."
     }
   },
   "rooms": {
     "chodba": {
       "ID": "chodba",
       "name": "Chodba",
-      "description": "Dlouhá, temná chodba spojující všechna kupé, toaletu i zázemí průvodčích.",
+      "description": "Dlouhá, temná chodba spojující všechna kupé.",
       "exits": [
-        "sluzebni_oddil",
-        "kupe1",
-        "kupe2",
-        "kupe3",
-        "kupe4",
-        "kupe5",
-        "sklad",
-        "toaleta",
-        "jidelna"
+        "sluzebni_oddil", "kupe1", "kupe2", "kupe3", "kupe4", "kupe5", "sklad", "toaleta", "jidelna"
       ]
     },
     "sluzebni_oddil": {
       "ID": "sluzebni_oddil",
       "name": "Služební oddíl",
-      "description": "Karlovo zázemí. Spí tu kolega Lojza. Na stole se válí různé věci.",
-      "exits": [
-        "chodba"
-      ]
+      "description": "Karlovo zázemí, kde spí kolega Lojza.",
+      "exits": ["chodba"]
     },
     "kupe1": {
       "ID": "kupe1",
       "name": "Kupé 1 (Madam Hrušková)",
-      "description": "Místo činu. Luxusní kupé, které silně voní parfémem.",
-      "exits": [
-        "chodba"
-      ]
+      "description": "Luxusní kupé vonící parfémem, místo činu.",
+      "exits": ["chodba"]
     },
     "kupe2": {
       "ID": "kupe2",
       "name": "Kupé 2 (Kouzelník)",
-      "description": "Podezřelé místo plné rekvizit, karet a falešných dýk.",
-      "exits": [
-        "chodba"
-      ]
+      "description": "Místo plné rekvizit a falešných dýk.",
+      "exits": ["chodba"]
     },
     "kupe3": {
       "ID": "kupe3",
       "name": "Kupé 3 (Student Filip)",
-      "description": "Malé kupé plné knih a skript.",
-      "exits": [
-        "chodba"
-      ],
+      "description": "Malé kupé plné knih a učebnic.",
+      "exits": ["chodba"],
       "unlocks": "klic"
     },
     "kupe4": {
       "ID": "kupe4",
       "name": "Kupé 4 (Generál)",
-      "description": "Stroze zařízené kupé. Generál zde nespí a hlídá.",
-      "exits": [
-        "chodba"
-      ]
+      "description": "Stroze zařízené kupé, které Generál hlídá.",
+      "exits": ["chodba"]
     },
     "kupe5": {
       "ID": "kupe5",
       "name": "Kupé 5 (Doktor)",
-      "description": "Kupé staršího lékaře, je zde cítit dezinfekce.",
-      "exits": [
-        "chodba"
-      ]
+      "description": "Kupé lékaře, je zde cítit dezinfekce.",
+      "exits": ["chodba"]
     },
     "sklad": {
       "ID": "sklad",
       "name": "Sklad",
-      "description": "Malý sklad na konci chodby s úklidovými prostředky.",
-      "exits": [
-        "chodba"
-      ]
+      "description": "Malý kumbál s úklidovými prostředky.",
+      "exits": ["chodba"]
     },
     "toaleta": {
       "ID": "toaleta",
       "name": "Toaleta",
-      "description": "Úzká toaleta. Je tu tma, možná by se hodilo si posvítit.",
-      "exits": [
-        "chodba"
-      ]
+      "description": "Úzká a tmavá toaleta na konci chodby.",
+      "exits": ["chodba"]
     },
     "jidelna": {
       "ID": "jidelna",
       "name": "Jídelní vůz",
-      "description": "Společné místo, kde se dá sehnat jídlo a potkat ostatní cestující.",
-      "exits": [
-        "chodba"
-      ]
+      "description": "Místo pro cestující, v tuto chvíli prázdné.",
+      "exits": ["chodba"]
     }
   },
   "startingRoomID": "sluzebni_oddil",
@@ -182,11 +157,8 @@
     "name": "Student Filip",
     "age": 22,
     "currentRoomID": "kupe3",
-    "proofs": [
-      "knoflik",
-      "dluh"
-    ],
-    "basicDialogue": "Jen si tu čtu... stalo se něco? Ten svetr? Jen se mi o něco zachytil, nic víc.",
+    "proofs": ["knoflik", "dluh"],
+    "basicDialogue": "Jen si tu čtu... stalo se něco? Ten svetr se mi jen o něco zachytil.",
     "afterCaughtDialogue": "Já ty peníze potřeboval! Kdybyste věděl, co mi hrozí za dluhy... Pusťte mě!"
   }
 }

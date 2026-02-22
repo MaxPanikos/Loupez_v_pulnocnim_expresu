@@ -29,6 +29,7 @@ public class Inspect implements Command{
     public String execute(String command) throws Exception {
         Item item = world.getPlayer().getInventoryItem(command);
         if (item != null) {
+            this.world.setMinutesLeft(this.world.getMinutesLeft() - 1);
             return item.getDescription();
         }
         throw new Exception("Tento item nemate v inventari!");

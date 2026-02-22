@@ -35,6 +35,7 @@ public class Give implements Command {
             if (item != null) {
                 world.getPlayer().removeItem(item);
                 npc.setWasItemGiven(true);
+                this.world.setMinutesLeft(this.world.getMinutesLeft() - 1);
                 return "Postava si vzala predmet " + item.getName();
             }
             throw new Exception("Nemate tuto vec v inventari!");

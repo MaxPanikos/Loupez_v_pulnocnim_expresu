@@ -15,6 +15,7 @@ public class Discard implements Command {
         command = command.trim().toLowerCase();
         Item item = world.getPlayer().getInventoryItem(command);
         if (item != null && world.getPlayer().throwAwayItem(item)) {
+            this.world.setMinutesLeft(this.world.getMinutesLeft() - 1);
             return "Predmet " + item.getName() + " byl odlozen.";
         }
         throw new Exception("Tento predmet nemate v kapsach!");

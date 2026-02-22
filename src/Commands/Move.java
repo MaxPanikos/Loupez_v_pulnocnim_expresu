@@ -16,6 +16,7 @@ public class Move implements Command{
         Room room = world.getRooms().get(command);
         if (room != null) {
             if (world.getPlayer().move(room)) {
+                this.world.setMinutesLeft(this.world.getMinutesLeft() - 1);
                 return "Hrac byl presunut do " + room.getName();
             }
         }

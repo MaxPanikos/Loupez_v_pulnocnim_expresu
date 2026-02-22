@@ -124,6 +124,7 @@ public class FileManager {
                 if (roomDto.getUnlocks() != null) {
                     Item unlockingItem = itemMap.get(roomDto.getUnlocks());
                     currentRoom.setUnlocks(unlockingItem);
+                    currentRoom.setLocked(true);
                 }
             }
 
@@ -143,9 +144,5 @@ public class FileManager {
             e.printStackTrace();
             throw new Exception("Chyba při konverzi DTO na herní objekty: " + e.getMessage());
         }
-    }
-
-    public static void save (World world, String resourcePath) throws Exception{
-
     }
 }

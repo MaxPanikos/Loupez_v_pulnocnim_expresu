@@ -15,6 +15,7 @@ public class Grab implements Command {
         Item item = world.getPlayer().getCurrentRoom().getItems().get(command);
         if (item != null) {
             if (world.getPlayer().grabItem(item)) {
+                this.world.setMinutesLeft(this.world.getMinutesLeft() - 1);
                 return "Predmet " +  item.getName() + " byl sebran a strcen do kapsy.";
             }
             throw new Exception("Predmet se nepodarilo sebrat!");
