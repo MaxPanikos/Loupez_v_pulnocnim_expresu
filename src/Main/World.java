@@ -10,17 +10,19 @@ public class World {
     private Player player;
     private boolean gameOver;
     private int minutesLeft;
+    private String prologue;
 
     public World() {
         this.rooms = new HashMap<>();
         this.player = new Player(null);
     }
 
-    public World(HashMap<String, Room> rooms, Player player, int minutesLeft) {
+    public World(HashMap<String, Room> rooms, Player player, int minutesLeft, String prologue) {
         this.rooms = rooms;
         this.player = player;
         this.minutesLeft = minutesLeft;
         this.gameOver = false;
+        this.prologue = prologue;
     }
 
     public HashMap<String, Room> getRooms() {
@@ -57,5 +59,9 @@ public class World {
 
     public void setMinutesLeft(int minutesLeft) {
         this.minutesLeft = minutesLeft;
+    }
+
+    public String getPrologue() {
+        return prologue;
     }
 }

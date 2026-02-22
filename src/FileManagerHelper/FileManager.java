@@ -29,6 +29,7 @@ public class FileManager {
     private String startingRoomID;
     private ThiefDTO thief;
     private int minutesLeft;
+    private String prologue;
 
     /**
      * Načte data z JSON souboru.
@@ -137,7 +138,7 @@ public class FileManager {
                 }
             }
 
-            World world = new World(worldMap, new Player(startingRoomObj), minutesLeft);
+            World world = new World(worldMap, new Player(startingRoomObj), minutesLeft, prologue);
 
 
 

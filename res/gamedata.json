@@ -152,6 +152,7 @@
   },
   "startingRoomID": "sluzebni_oddil",
   "minutesLeft": 180,
+  "prologue": "Noční expres na trase Praha–Vídeň uvízl v ledové vánici. Ticho náhle protne výkřik Madam Hruškové z Kupé 1 – její drahocenný náhrdelník je pryč! Jako průvodčí Karel máte čas jen do rána, než dorazí pomoc a vlak se znovu rozjede. Najděte zloděje dříve, než se souprava pohne a pachatel nenávratně zmizí v ulicích Vídně.",
   "thief": {
     "ID": "filip",
     "name": "Student Filip",

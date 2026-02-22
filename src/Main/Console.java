@@ -3,8 +3,6 @@ package Main;
 import Commands.*;
 import FileManagerHelper.FileManager;
 
-import javax.swing.plaf.ColorUIResource;
-import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -87,6 +85,7 @@ public class Console {
         if (world.getPlayer().getCurrentRoom() == null) {
             return;
         }
+        System.out.println(Colors.BLUE + world.getPrologue() + Colors.RESET);
         boolean exit = false;
         while (!exit) {
             if (!world.isGameOver() && !(world.getMinutesLeft() <= 0)) {
