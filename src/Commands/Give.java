@@ -27,6 +27,9 @@ public class Give implements Command {
         NPC npc = world.getPlayer().getCurrentRoom().getNpcs().get(splitedCommand[0]);
         if (npc != null) {
             Item item = world.getPlayer().getInventoryItem(splitedCommand[1]);
+            if (npc.getItemForDialogue() != item) {
+                throw new Exception("Tato posatava nechce tento predmet!");
+            }
             if (item != null) {
                 world.getPlayer().removeItem(item);
                 npc.setWasItemGiven(true);
