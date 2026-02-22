@@ -30,6 +30,13 @@ public class Thief extends NPC{
         return name + ": Nemate dukazy a ja to opravdu nejsem!";
     }
 
+
+    /**
+     * compares two lists if they are identical
+     * @param list1
+     * @param list2
+     * @return true if they are identical
+     */
     private boolean compareLists (ArrayList<String> list1, ArrayList<String> list2) {
         if (list1.size() != list2.size()) {
             return false;

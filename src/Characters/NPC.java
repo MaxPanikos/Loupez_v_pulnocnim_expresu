@@ -36,6 +36,11 @@ public class NPC extends Character{
         this.wasItemGiven = false;
     }
 
+    /**
+     * moves character to another room
+     * @param newRoom room where the character wants to move
+     * @return true if the move is done correctly
+     */
     public boolean move (Room newRoom) {
         if (currentRoom.getID().equals(newRoom.getID())) {
             return false;
@@ -48,10 +53,20 @@ public class NPC extends Character{
         return false;
     }
 
+    /**
+     * only gives true/false if you have enough proofs to detain thief
+     * @param playerProofs list of ployers proofs
+     * @return false for every npc
+     */
     public boolean accuseTest (ArrayList<String> playerProofs) {
         return false;
     }
 
+    /**
+     * gives you speech from person about them being thief
+     * @param playerProofs list of players proofs
+     * @return String
+     */
     public String accuse (ArrayList<String> playerProofs) {
         return name + ": Nemate dukazy a ja to opravdu nejsem!";
     }

@@ -16,16 +16,11 @@ public class Player extends Character{
         this.proofs = new ArrayList<>();
     }
 
-    private int unusedPockets () {
-        int pocketsLeft = inventory.length;
-        for (int i = 0; i < inventory.length; i++) {
-            if (inventory[i] != null) {
-                pocketsLeft--;
-            }
-        }
-        return pocketsLeft;
-    }
-
+    /**
+     * checks the inventory of the player and return position of the searched item
+     * @param item searched item
+     * @return position of item in inventory or null if there is not this item
+     */
     public Integer checkInventory (Item item) {
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i] != null && inventory[i].equals(item)) {
@@ -35,6 +30,11 @@ public class Player extends Character{
         return null;
     }
 
+    /**
+     * gives Item class from ID in inventory
+     * @param ID of the item
+     * @return searched Item or null if there is not this item
+     */
     public Item getInventoryItem (String ID) {
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i] != null && inventory[i].getID().equals(ID)) {
@@ -44,6 +44,11 @@ public class Player extends Character{
         return null;
     }
 
+    /**
+     * grabs Item from room and put it into inventory
+     * @param item you want to pick up
+     * @return true if the grab went well
+     */
     public boolean grabItem (Item item) {
         if (currentRoom.getItems().containsKey(item.getID())) {
             for (int i = 0; i < inventory.length; i++) {
@@ -58,6 +63,11 @@ public class Player extends Character{
         return false;
     }
 
+    /**
+     * takes Item from the inventory and put it in room where the player is
+     * @param item you want to throw away
+     * @return true if the thrown away went successfully
+     */
     public boolean throwAwayItem (Item item) {
         Integer check = checkInventory(item);
         if (check != null) {
@@ -68,6 +78,11 @@ public class Player extends Character{
         return false;
     }
 
+    /**
+     * removes item from inventory
+     * @param item you want to remove
+     * @return true if it was deleted
+     */
     public boolean removeItem (Item item) {
         Integer check = checkInventory(item);
         if (check != null) {
@@ -77,6 +92,13 @@ public class Player extends Character{
         return false;
     }
 
+
+    /**
+     * moves player throughout the rooms
+     * @param newRoom room where you want to move
+     * @return true if the moving went well
+     * @throws Exception if there is an error while moving or before moving
+     */
     public boolean move (Room newRoom) throws Exception{
         if (currentRoom.getRooms().containsKey(newRoom.getID())) {
             if (newRoom.isLocked()) {
@@ -102,6 +124,10 @@ public class Player extends Character{
                 '}';
     }
 
+    /**
+     * gives String of the players inventory
+     * @return String
+     */
     public String inventory () {
         String inventoryString = "Inventar: ";
         for (int i = 0; i < inventory.length; i++) {

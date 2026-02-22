@@ -46,4 +46,9 @@ public class Unlock implements Command {
     public boolean exit() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Odemkni mistnost: odemkni <mistnost>";
+    }
 }
