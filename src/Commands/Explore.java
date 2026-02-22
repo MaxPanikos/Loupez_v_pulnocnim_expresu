@@ -61,11 +61,6 @@ public class Explore implements Command {
     }
 
     @Override
-    public boolean nextScanner() {
-        return false;
-    }
-
-    @Override
     public String toString() {
         return "Prohledat: prohledej";
     }

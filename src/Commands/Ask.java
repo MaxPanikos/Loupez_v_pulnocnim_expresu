@@ -40,10 +40,6 @@ public class Ask implements Command {
         return false;
     }
 
-    @Override
-    public boolean nextScanner() {
-        return false;
-    }
 
     @Override
     public String toString() {

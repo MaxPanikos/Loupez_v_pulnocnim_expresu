@@ -22,11 +22,6 @@ public class Exit implements Command {
     }
 
     @Override
-    public boolean nextScanner() {
-        return false;
-    }
-
-    @Override
     public String toString() {
         return "Opustit hru: konec";
     }

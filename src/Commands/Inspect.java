@@ -16,14 +16,10 @@ public class Inspect implements Command{
     }
 
     @Override
-    public String text() throws Exception {
+    public String text() {
         return "";
     }
 
-    @Override
-    public boolean nextScanner() {
-        return false;
-    }
 
     @Override
     public String execute(String command) throws Exception {

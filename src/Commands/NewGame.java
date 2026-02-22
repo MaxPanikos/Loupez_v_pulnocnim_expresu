@@ -31,11 +31,6 @@ public class NewGame implements Command {
     }
 
     @Override
-    public boolean nextScanner() {
-        return false;
-    }
-
-    @Override
     public String toString() {
         return "Nova hra: nova hra";
     }

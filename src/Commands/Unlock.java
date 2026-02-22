@@ -18,13 +18,8 @@ public class Unlock implements Command {
     }
 
     @Override
-    public String text() throws Exception {
+    public String text() {
         return "";
-    }
-
-    @Override
-    public boolean nextScanner() {
-        return false;
     }
 
     @Override

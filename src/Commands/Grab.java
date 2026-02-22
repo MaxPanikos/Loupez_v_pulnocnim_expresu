@@ -39,11 +39,6 @@ public class Grab implements Command {
     }
 
     @Override
-    public boolean nextScanner() {
-        return false;
-    }
-
-    @Override
     public String toString() {
         return "Vzit: seber <item v mistnosti>";
     }

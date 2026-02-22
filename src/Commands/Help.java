@@ -39,11 +39,6 @@ public class Help implements Command {
     }
 
     @Override
-    public boolean nextScanner() {
-        return false;
-    }
-
-    @Override
     public String toString() {
         return "Pomoc: pomoc";
     }

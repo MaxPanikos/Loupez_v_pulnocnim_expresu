@@ -38,11 +38,6 @@ public class Discard implements Command {
     }
 
     @Override
-    public boolean nextScanner() {
-        return false;
-    }
-
-    @Override
     public String toString() {
         return "Odhodit: odhod <item v inventari>";
     }

@@ -41,11 +41,6 @@ public class Accuse implements Command {
     }
 
     @Override
-    public boolean nextScanner() {
-        return false;
-    }
-
-    @Override
     public String toString() {
         return "Obvinit: obvin <jmeno npc>";
     }

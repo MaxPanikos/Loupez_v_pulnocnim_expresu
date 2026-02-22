@@ -39,11 +39,6 @@ public class Move implements Command{
     }
 
     @Override
-    public boolean nextScanner() {
-        return false;
-    }
-
-    @Override
     public String toString() {
         return "Chodit: jdi <nazev mistnosti>";
     }

@@ -57,7 +57,9 @@ public class FileManager {
     public Map<String, NPCDTO> getNpcs() { return npcs; }
 
     /**
-     * Převede načtená "syrová" data (DTO) na skutečné herní objekty.
+     * transforms Data Transfer Object to actual objects
+     * @return World map
+     * @throws Exception if there is an error during transfer
      */
     public World getRoomMap() throws Exception {
         try {

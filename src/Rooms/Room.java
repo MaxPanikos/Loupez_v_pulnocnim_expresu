@@ -27,6 +27,11 @@ public class Room {
         this.locked = false;
     }
 
+
+    /**
+     * gives you basic info about the room
+     * @return String
+     */
     public String text () {
         String head = "Jsi v mistnostni " + name + "\n" + description;
         String npcsString = "Lide v mistnosti: ";
@@ -57,6 +62,11 @@ public class Room {
         return head + "\n" + npcsString + "\n" + roomRooms;
     }
 
+    /**
+     * method that adds NPC to room
+     * @param npc you want to add
+     * @return true if the add was successful
+     */
     public boolean addNPC(NPC npc) {
         if (!npcs.containsKey(npc.getID()) && npc.getCurrentRoom().getRooms().containsKey(npc.getID())) {
             npcs.put(npc.getID(), npc);
@@ -66,6 +76,11 @@ public class Room {
         return false;
     }
 
+    /**
+     * removes npc from the room
+     * @param npc you want to remove
+     * @return true if the remove was successful
+     */
     public boolean removeNPC(NPC npc) {
         if (npcs.containsKey(npc.getID())) {
             npcs.remove(npc.getID());
@@ -74,6 +89,11 @@ public class Room {
         return false;
     }
 
+    /**
+     * spawns npc only at the start of the game
+     * @param npc you want to spawn
+     * @return true if the spawn was successful
+     */
     public boolean spawnNPC (NPC npc) {
         if (!npcs.containsKey(npc.getID())) {
             npcs.put(npc.getID(), npc);
@@ -125,6 +145,7 @@ public class Room {
     public void setRooms(HashMap<String, Room> rooms) {
         this.rooms = rooms;
     }
+
 
     public boolean addItem(Item item) {
         if (!items.containsKey(item.getID())) {

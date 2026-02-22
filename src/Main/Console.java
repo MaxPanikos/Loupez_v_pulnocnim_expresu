@@ -14,6 +14,9 @@ public class Console {
     private World world;
     private Scanner sc;
 
+    /**
+     * constructor + setup of the game
+     */
     public Console() {
         this.gameCommands = new HashMap<>();
         this.menuCommands = new HashMap<>();
@@ -44,13 +47,15 @@ public class Console {
         menuCommands.put("nova hra", new NewGame(this));
     }
 
+    /**
+     * main menu of the game
+     */
     public void menu () {
         boolean exit = false;
         while (!exit) {
             System.out.println(Colors.YELLOW + "Loupez v pulnocnim expresu" + Colors.RESET);
             System.out.println("Napiste co chcete udelat:");
             System.out.println(Colors.GREEN + "nova hra" + Colors.RESET + " - Vytvorit novou hru.");
-            System.out.println(Colors.GREEN + "nacist hru" + Colors.RESET + " - Nacist ulozenou hru.");
             System.out.println(Colors.GREEN + "konec" + Colors.RESET + " - Vytvorit novou hru.");
             System.out.print(">> ");
             String input = sc.nextLine();
@@ -60,12 +65,7 @@ public class Console {
                 try {
                     if (c.hasText()) {
                         System.out.println(">> " + c.text());
-                        if (c.nextScanner()) {
-                            input = sc.nextLine();
-                            System.out.println(">> " + c.execute(input.toLowerCase()));
-                        } else {
-                            System.out.println(">> " + c.execute(""));;
-                        }
+                        System.out.println(">> " + c.execute(""));
                     } else {
                         System.out.println(">> " + c.execute(""));
                     }
@@ -80,6 +80,9 @@ public class Console {
         }
     }
 
+    /**
+     * actual game
+     */
     public void game () {
         if (world.getPlayer().getCurrentRoom() == null) {
             return;
