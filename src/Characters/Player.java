@@ -35,9 +35,9 @@ public class Player extends Character{
         return null;
     }
 
-    public Item getInventoryItem (String name) {
+    public Item getInventoryItem (String ID) {
         for (int i = 0; i < inventory.length; i++) {
-            if (inventory[i] != null && inventory[i].getID().equals(name)) {
+            if (inventory[i] != null && inventory[i].getID().equals(ID)) {
                 return inventory[i];
             }
         }
@@ -68,12 +68,17 @@ public class Player extends Character{
         return false;
     }
 
-    public boolean move (Room newRoom) {
+    public boolean move (Room newRoom) throws Exception{
         if (currentRoom.getRooms().containsKey(newRoom.getID())) {
-            currentRoom = newRoom;
-            return true;
+            if (newRoom.getUnlocks() != null && checkInventory(newRoom.getUnlocks()) == null) {
+                throw new Exception("Nemate potrebny predmet ke vstupu do mistnosti (" + newRoom.getUnlocks().getName() + ")!");
+            } else {
+                currentRoom = newRoom;
+                return true;
+            }
+        } else {
+            throw new Exception("Do teto mistnosti se neda jit z mistnosti kde se nachazite!");
         }
-        return false;
     }
 
     public ArrayList<String> getProofs() {

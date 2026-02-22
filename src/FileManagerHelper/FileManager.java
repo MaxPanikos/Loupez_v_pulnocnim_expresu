@@ -115,6 +115,10 @@ public class FileManager {
                     }
                     currentRoom.setRooms(actualExitsMap);
                 }
+                if (roomDto.getUnlocks() != null) {
+                    Item unlockingItem = itemMap.get(roomDto.getUnlocks());
+                    currentRoom.setUnlocks(unlockingItem);
+                }
             }
 
             Room startingRoomObj = null;

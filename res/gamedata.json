@@ -123,7 +123,8 @@
       "description": "Malé kupé plné knih a skript.",
       "exits": [
         "chodba"
-      ]
+      ],
+      "unlocks": "klic"
     },
     "kupe4": {
       "ID": "kupe4",

@@ -26,13 +26,13 @@ public class Explore implements Command {
                         if (item.getOnlyIf() != null) {
                             roomItems += "potrebuju " + item.getOnlyIf().getName() + " abych si to mohl prohlednout...";
                         } else {
-                            roomItems += item.getID() + " - " + item.getDescription();
+                            roomItems += item.getName() + " (" + item.getID() + ")";
                         }
                     } else {
                         if (item.getOnlyIf() != null) {
                             roomItems += "potrebuju " + item.getOnlyIf().getName() + " abych si to mohl prohlednout, ";
                         } else {
-                            roomItems += item.getID() + " - " + item.getDescription() + ", ";
+                            roomItems += item.getName() + " (" + item.getID() + "), ";
                         }
                         i++;
                     }

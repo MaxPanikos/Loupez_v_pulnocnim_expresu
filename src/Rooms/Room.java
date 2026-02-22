@@ -13,6 +13,7 @@ public class Room {
     private HashMap<String, NPC> npcs;
     private HashMap<String, Item> items;
     private HashMap<String, Room> rooms;
+    private Item unlocks;
 
     public Room(String ID, String name, String description) {
         this.ID = ID;
@@ -76,6 +77,14 @@ public class Room {
             return true;
         }
         return false;
+    }
+
+    public Item getUnlocks() {
+        return unlocks;
+    }
+
+    public void setUnlocks(Item unlocks) {
+        this.unlocks = unlocks;
     }
 
     public String getID() {

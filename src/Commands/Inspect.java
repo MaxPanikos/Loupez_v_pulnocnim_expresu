@@ -1,0 +1,46 @@
+package Commands;
+
+import Items.Item;
+import Main.World;
+
+public class Inspect implements Command{
+    private World world;
+
+    public Inspect(World world) {
+        this.world = world;
+    }
+
+    @Override
+    public boolean hasText() {
+        return false;
+    }
+
+    @Override
+    public String text() throws Exception {
+        return "";
+    }
+
+    @Override
+    public boolean nextScanner() {
+        return false;
+    }
+
+    @Override
+    public String execute(String command) throws Exception {
+        Item item = world.getPlayer().getInventoryItem(command);
+        if (item != null) {
+            return item.getDescription();
+        }
+        throw new Exception("Tento item nemate v inventari!");
+    }
+
+    @Override
+    public boolean exit() {
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Prohlednout predmet: prohledni <item>";
+    }
+}
