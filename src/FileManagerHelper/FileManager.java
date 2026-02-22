@@ -62,6 +62,8 @@ public class FileManager {
         try {
             HashMap<String, Room> worldMap = new HashMap<>();
 
+            HashMap<String, Item> itemMap = new HashMap<>();
+
             for (RoomDTO roomDto : rooms.values()) {
                 worldMap.put(roomDto.getID(), new Room(roomDto.getID(), roomDto.getName(), roomDto.getDescription()));
             }
@@ -69,7 +71,18 @@ public class FileManager {
             for (ItemDTO itemDto : items.values()) {
                 String roomId = itemDto.getCurrentRoomID();
                 if (worldMap.containsKey(roomId)) {
-                    worldMap.get(roomId).addItem(new Item(itemDto.getID(), itemDto.getName(), itemDto.getDescription()));
+                    Item item = new Item(itemDto.getID(), itemDto.getName(), itemDto.getDescription());
+                    worldMap.get(roomId).addItem(item);
+                    itemMap.put(item.getID(), item);
+                }
+            }
+
+            for (ItemDTO itemDto : items.values()) {
+                String roomId = itemDto.getCurrentRoomID();
+                if (worldMap.containsKey(roomId)) {
+                    if (itemDto.getOnlyIf() != null && itemMap.get(itemDto.getOnlyIf()) != null) {
+                        worldMap.get(roomId).getItems().get(itemDto.getID()).setOnlyIf(itemMap.get(itemDto.getOnlyIf()));
+                    }
                 }
             }
 

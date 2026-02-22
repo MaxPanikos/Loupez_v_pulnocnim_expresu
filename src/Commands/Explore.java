@@ -23,9 +23,17 @@ public class Explore implements Command {
                 int i = 0;
                 for (Item item : items.values()) {
                     if (i == items.size()-1) {
-                        roomItems += item.getID() + " - " + item.getDescription();
+                        if (item.getOnlyIf() != null) {
+                            roomItems += "potrebuju " + item.getOnlyIf().getName() + " abych si to mohl prohlednout...";
+                        } else {
+                            roomItems += item.getID() + " - " + item.getDescription();
+                        }
                     } else {
-                        roomItems += item.getID() + " - " + item.getDescription() + ", ";
+                        if (item.getOnlyIf() != null) {
+                            roomItems += "potrebuju " + item.getOnlyIf().getName() + " abych si to mohl prohlednout, ";
+                        } else {
+                            roomItems += item.getID() + " - " + item.getDescription() + ", ";
+                        }
                         i++;
                     }
                 }

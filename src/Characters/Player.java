@@ -62,7 +62,7 @@ public class Player extends Character{
         Integer check = checkInventory(item);
         if (check != null) {
             inventory[check] = null;
-            currentRoom.getItems().put(item.getName(), item);
+            currentRoom.getItems().put(item.getID(), item);
             return true;
         }
         return false;

@@ -56,6 +56,6 @@ public class NPC extends Character{
 
     @Override
     public String toString() {
-        return name + " " + age;
+        return name + " (" + ID + ")";
     }
 }

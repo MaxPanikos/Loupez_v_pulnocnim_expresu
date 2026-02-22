@@ -24,7 +24,7 @@ public class Thief extends NPC{
         if (compareLists(proofs, playerProofs)) {
             return "No dobre jsem to ja.";
         }
-        return "Nejsem to ja a ani nemate dukazy.";
+        return "Nejsem to ja a ani nemate dukazy...";
     }
 
     private boolean compareLists (ArrayList<String> list1, ArrayList<String> list2) {

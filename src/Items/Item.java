@@ -4,11 +4,21 @@ public class Item {
     private String ID;
     private String name;
     private String description;
+    private Item onlyIf;
 
     public Item(String ID, String name, String description) {
         this.ID = ID;
         this.name = name;
         this.description = description;
+        this.onlyIf = null;
+    }
+
+    public Item getOnlyIf() {
+        return onlyIf;
+    }
+
+    public void setOnlyIf(Item onlyIf) {
+        this.onlyIf = onlyIf;
     }
 
     public String getName() {

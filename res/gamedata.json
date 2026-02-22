@@ -40,7 +40,8 @@
       "ID": "nahrdelnik",
       "name": "Diamantový náhrdelník",
       "description": "Vzácný šperk Madam Hruškové nalezený v nádržce toalety.",
-      "currentRoomID": "toaleta"
+      "currentRoomID": "toaleta",
+      "onlyIf": "baterka"
     }
   },
   "npcs": {
@@ -172,7 +173,9 @@
     "age": 22,
     "currentRoomID": "kupe3",
     "proofs": [
-      "nahrdelnik"
+      "nahrdelnik",
+      "knoflik",
+      "dluh"
     ]
   }
 }
