@@ -10,7 +10,7 @@
       "ID": "cigarety",
       "name": "Cigarety",
       "description": "Krabička cigaret ze služebního oddílu, slouží jako úplatek pro Generála.",
-      "currentRoomID": "sluzebni_oddil"
+      "currentRoomID": "jidelna"
     },
     "knoflik": {
       "ID": "knoflik",
@@ -58,6 +58,15 @@
       "age": 50,
       "currentRoomID": "kupe1",
       "basicDialogue": "(Vzlyká a lapá po dechu) Můj náhrdelník... pryč! Nedokážu mluvit...",
+      "itemForDialogue": "nahrdelnik",
+      "afterItemDialogue": "Ooo děkuji že jste mi našel a vrátil náhrdelník."
+    },
+    "jabkova": {
+      "ID": "hruskova",
+      "name": "Madam Jabková",
+      "age": 45,
+      "currentRoomID": "kupe1",
+      "basicDialogue": "(Vzlyká a lapá po dechu) Vůbec nechápu co se stalo... bylo to tak nečekané...",
       "itemForDialogue": "leky",
       "afterItemDialogue": "Už je mi lépe. Ukradli ho v noci. Určitě to byl ten Kouzelník odvedle!"
     },
@@ -82,7 +91,7 @@
       "name": "Starší Lékař",
       "age": 60,
       "currentRoomID": "kupe5",
-      "basicDialogue": "Slyšel jsem ten povyk. Madam Hrušková je v šoku, podejte jí tyto léky."
+      "basicDialogue": "Slyšel jsem ten povyk. Madam Jabková je v šoku, podejte jí tyto léky."
     }
   },
   "rooms": {
@@ -102,32 +111,32 @@
     },
     "kupe1": {
       "ID": "kupe1",
-      "name": "Kupé 1 (Madam Hrušková)",
+      "name": "Kupé 1",
       "description": "Luxusní kupé vonící parfémem, místo činu.",
       "exits": ["chodba"]
     },
     "kupe2": {
       "ID": "kupe2",
-      "name": "Kupé 2 (Kouzelník)",
+      "name": "Kupé 2",
       "description": "Místo plné rekvizit a falešných dýk.",
       "exits": ["chodba"]
     },
     "kupe3": {
       "ID": "kupe3",
-      "name": "Kupé 3 (Student Filip)",
+      "name": "Kupé 3",
       "description": "Malé kupé plné knih a učebnic.",
       "exits": ["chodba"],
       "unlocks": "klic"
     },
     "kupe4": {
       "ID": "kupe4",
-      "name": "Kupé 4 (Generál)",
+      "name": "Kupé 4",
       "description": "Stroze zařízené kupé, které Generál hlídá.",
       "exits": ["chodba"]
     },
     "kupe5": {
       "ID": "kupe5",
-      "name": "Kupé 5 (Doktor)",
+      "name": "Kupé 5",
       "description": "Kupé lékaře, je zde cítit dezinfekce.",
       "exits": ["chodba"]
     },
@@ -157,7 +166,7 @@
     "ID": "filip",
     "name": "Student Filip",
     "age": 22,
-    "currentRoomID": "kupe3",
+    "currentRoomID": "jidelna",
     "proofs": ["knoflik", "dluh"],
     "basicDialogue": "Jen si tu čtu... stalo se něco? Ten svetr se mi jen o něco zachytil.",
     "afterCaughtDialogue": "Já ty peníze potřeboval! Kdybyste věděl, co mi hrozí za dluhy... Pusťte mě!"

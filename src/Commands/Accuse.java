@@ -4,6 +4,8 @@ import Characters.NPC;
 import Characters.Thief;
 import Main.World;
 
+import java.util.ArrayList;
+
 public class Accuse implements Command {
     private World world;
 
@@ -16,11 +18,12 @@ public class Accuse implements Command {
         command = command.trim().toLowerCase();
         NPC npc = world.getPlayer().getCurrentRoom().getNpcs().get(command);
         if (npc != null) {
-            if (npc.accuseTest(world.getPlayer().getProofs())) {
+            if (npc.accuseTest(world.getPlayer().inventoryToStringList())) {
                 this.world.setGameOver(true);
                 this.world.setMinutesLeft(this.world.getMinutesLeft() - 1);
-                return npc.accuse(world.getPlayer().getProofs());
             }
+            System.out.println(world.getPlayer().inventoryToStringList());
+            return npc.accuse(world.getPlayer().getProofs());
         }
         throw new Exception("Tato osoba se nenachazi v teto mistnosti!");
     }
@@ -42,6 +45,6 @@ public class Accuse implements Command {
 
     @Override
     public String toString() {
-        return "Obvinit: obvin <jmeno npc>";
+        return "Obvinit: obvin <npc>";
     }
 }

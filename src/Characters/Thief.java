@@ -15,6 +15,7 @@ public class Thief extends NPC{
         this.afterCaughtDialogue = afterCaughtDialogue;
     }
 
+    @Override
     public boolean accuseTest (ArrayList<String> playerProofs) {
         if (compareLists(proofs, playerProofs)) {
             return true;
@@ -37,14 +38,16 @@ public class Thief extends NPC{
      * @param list2
      * @return true if they are identical
      */
-    private boolean compareLists (ArrayList<String> list1, ArrayList<String> list2) {
+    private boolean compareLists(ArrayList<String> list1, ArrayList<String> list2) {
         if (list1.size() != list2.size()) {
             return false;
         }
-        ArrayList copy1 = new ArrayList(list1);
-        ArrayList copy2 = new ArrayList(list2);
-        Collections.sort(list1);
-        Collections.sort(list2);
+        ArrayList<String> copy1 = new ArrayList<>(list1);
+        ArrayList<String> copy2 = new ArrayList<>(list2);
+
+        Collections.sort(copy1);
+        Collections.sort(copy2);
+
         return copy1.equals(copy2);
     }
 }

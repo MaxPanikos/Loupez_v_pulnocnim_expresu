@@ -3,20 +3,16 @@
 Loupež v půlnočním expresu je textová detektivní adventura. Hráč se ujímá role průvodčího Karla ve vlaku na trase z Prahy do Vídně, který kvůli vánici uvízl na trati.
 
 ## 📖 Příběh
-Během nucené zastávky v mrazivé noci nahlásí operní pěvkyně Madam Hrušková krádež vzácného diamantového náhrdelníku. Hlavním úkolem je vypátrat skutečného zloděje – nenápadného studenta Filipa, kterého k činu dohnaly dluhy – dříve, než se vlak ráno (za pár hodin) znovu rozjede.
+Během nucené zastávky v mrazivé noci nahlásí operní pěvkyně Madam Hrušková krádež vzácného diamantového náhrdelníku. Hlavním úkolem je vypátrat skutečného zloděje, zjistit co ho k tomu vedlo – dříve, než se vlak ráno (za pár hodin) znovu rozjede.
 
-## 🎯 Cíle hry
+## 🎯 Cíl hry
 
-Najít ukradený náhrdelník ukrytý v nádržce na toaletě.
-
-
-Shromáždit důkazy: Najít utržený knoflík v Kupé 1 a dlužní úpis v Kupé 3.
-
-
-Zadržet zloděje: Konfrontovat a porazit studenta Filipa v závěrečném střetu.
+Najít ukradený náhrdelník, shromáždit důkazy, zadržet zloděje (konfrontovat ho).
 
 ## 🎮 Herní příkazy
-Hra využívá konzolové rozhraní a reaguje na následující příkazy (ve formátu příkaz [cíl]):
+Hra využívá konzolové rozhraní a reaguje na následující příkazy (ve formátu příkaz [cíl]).
+Vždy ovšem pište název osoby, mistnosti, atd... ze závorky (dále ID).
+Příklad: Z teto mistnosti muzete do (1): Jídelní vůz (jidelna) tak ID je jidelna nikoliv Jídelní vůz.
 
 ### Navigace a manipulace
 
@@ -63,8 +59,5 @@ Omezený inventář: Karel může mít u sebe současně pouze dva předměty. H
 Skládání stop: K úspěšnému usvědčení nestačí náhrdelník jen najít; hráč musí mít v ruce důkaz (knoflík) a znát motiv (dluh).
 
 ## 📁 Technická struktura
-Data: Veškerá herní data (místnosti, NPC, předměty) jsou načítána z externího souboru gamedata.json přes třídu FileManager.
-
-Architektura: Projekt využívá vzor Command (příkazy jsou uloženy v HashMap) pro flexibilní zpracování vstupů v třídě Console.
-
-Herní stav: Třída World spravuje aktuální polohu hráče, inventář a zbývající čas.
+Veškerá herní data (místnosti, NPC, předměty) jsou načítána z externího souboru gamedata.json přes třídu FileManager.
+JSON soubor načítá externí knihovna GSON.

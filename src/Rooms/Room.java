@@ -41,9 +41,9 @@ public class Room {
             int i = 0;
             for (NPC npc : npcs.values()) {
                 if (i == npcs.size()-1) {
-                    npcsString += npc.getName();
+                    npcsString += npc.getName() + " (" + npc.getID() + ")";
                 } else {
-                    npcsString += npc.getName() + ", ";
+                    npcsString += npc.getName() + " (" + npc.getID() + "), ";
                     i++;
                 }
             }
@@ -52,9 +52,9 @@ public class Room {
         int i = 0;
         for (Room room : rooms.values()) {
             if (i == rooms.size()-1) {
-                roomRooms += room.getName();
+                roomRooms += room.getName() + " (" + room.getID() + ")";
             } else {
-                roomRooms += room.getName() + ", ";
+                roomRooms += room.getName() + " (" + room.getID() + "), ";
                 i++;
             }
         }

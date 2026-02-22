@@ -140,8 +140,6 @@ public class FileManager {
 
             World world = new World(worldMap, new Player(startingRoomObj), minutesLeft, prologue);
 
-
-
             return world;
         } catch (Exception e) {
             e.printStackTrace();

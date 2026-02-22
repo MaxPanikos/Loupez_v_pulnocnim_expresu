@@ -145,4 +145,14 @@ public class Player extends Character{
         }
         return inventoryString;
     }
+
+    public ArrayList<String> inventoryToStringList () {
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i] != null) {
+                list.add(inventory[i].getID());
+            }
+        }
+        return list;
+    }
 }
