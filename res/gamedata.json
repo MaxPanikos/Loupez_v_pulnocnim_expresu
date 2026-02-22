@@ -152,7 +152,7 @@
     },
     "sklad": {
       "ID": "sklad",
-      "name": "Kumbál",
+      "name": "Sklad",
       "description": "Malý sklad na konci chodby s úklidovými prostředky.",
       "exits": [
         "chodba"
@@ -183,7 +183,6 @@
     "age": 22,
     "currentRoomID": "kupe3",
     "proofs": [
-      "nahrdelnik",
       "knoflik",
       "dluh"
     ],

@@ -23,13 +23,13 @@ public class Explore implements Command {
                 int i = 0;
                 for (Item item : items.values()) {
                     if (i == items.size()-1) {
-                        if (item.getOnlyIf() != null) {
+                        if (item.getOnlyIf() != null && world.getPlayer().checkInventory(item.getOnlyIf()) == null) {
                             roomItems += "potrebuju " + item.getOnlyIf().getName() + " abych si to mohl prohlednout...";
                         } else {
                             roomItems += item.getName() + " (" + item.getID() + ")";
                         }
                     } else {
-                        if (item.getOnlyIf() != null) {
+                        if (item.getOnlyIf() != null && world.getPlayer().checkInventory(item.getOnlyIf()) == null) {
                             roomItems += "potrebuju " + item.getOnlyIf().getName() + " abych si to mohl prohlednout, ";
                         } else {
                             roomItems += item.getName() + " (" + item.getID() + "), ";
