@@ -27,8 +27,10 @@ public class Thief extends NPC{
     public String accuse (ArrayList<String> playerProofs) {
         if (compareLists(proofs, playerProofs)) {
             return afterCaughtDialogue;
+        } else {
+            return name + ": Nemate dukazy a ja to opravdu nejsem!";
         }
-        return name + ": Nemate dukazy a ja to opravdu nejsem!";
+
     }
 
 

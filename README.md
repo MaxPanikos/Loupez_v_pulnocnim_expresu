@@ -56,7 +56,7 @@ Omezený inventář: Karel může mít u sebe současně pouze dva předměty. H
 Časový limit: Hráč má na vyřešení případu omezený počet minut (výchozí stav 180 minut).
 
 
-Skládání stop: K úspěšnému usvědčení nestačí náhrdelník jen najít; hráč musí mít v ruce důkaz (knoflík) a znát motiv (dluh).
+Skládání stop: K úspěšnému usvědčení nestačí náhrdelník jen najít; hráč musí mít v ruce důkaz a znát motiv.
 
 ## 📁 Technická struktura
 Veškerá herní data (místnosti, NPC, předměty) jsou načítána z externího souboru gamedata.json přes třídu FileManager.

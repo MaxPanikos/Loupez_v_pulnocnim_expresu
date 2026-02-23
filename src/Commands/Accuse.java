@@ -1,10 +1,7 @@
 package Commands;
 
 import Characters.NPC;
-import Characters.Thief;
 import Main.World;
-
-import java.util.ArrayList;
 
 public class Accuse implements Command {
     private World world;
@@ -22,7 +19,6 @@ public class Accuse implements Command {
                 this.world.setGameOver(true);
                 this.world.setMinutesLeft(this.world.getMinutesLeft() - 1);
             }
-            System.out.println(world.getPlayer().inventoryToStringList());
             return npc.accuse(world.getPlayer().getProofs());
         }
         throw new Exception("Tato osoba se nenachazi v teto mistnosti!");
