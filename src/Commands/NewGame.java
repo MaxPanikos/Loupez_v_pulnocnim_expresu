@@ -19,8 +19,6 @@ public class NewGame implements Command {
         try {
             World newWorld = fileManager.getRoomMap();
             c.setWorld(newWorld);
-            System.out.println(c.getWorld().getRooms());
-            System.out.println(c.getWorld() == null);
         } catch (Exception e) {
             System.err.println("Nastala chyba pri nacitani souboru!");
         }
