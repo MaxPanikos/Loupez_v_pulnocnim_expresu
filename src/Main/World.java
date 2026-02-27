@@ -3,9 +3,10 @@ package Main;
 import Characters.Player;
 import Rooms.Room;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class World {
+public class World implements Serializable {
     private HashMap<String, Room> rooms;
     private Player player;
     private boolean gameOver;
@@ -15,6 +16,9 @@ public class World {
     public World() {
         this.rooms = new HashMap<>();
         this.player = new Player(null);
+        this.gameOver = false;
+        this.minutesLeft = 0;
+        this.prologue = "";
     }
 
     public World(HashMap<String, Room> rooms, Player player, int minutesLeft, String prologue) {

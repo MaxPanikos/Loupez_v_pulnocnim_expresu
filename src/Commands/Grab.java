@@ -40,6 +40,6 @@ public class Grab implements Command {
 
     @Override
     public String toString() {
-        return "Vzit: seber <item v mistnosti>";
+        return " <item> - Hrac si vezme a prida do inventare dany item.";
     }
 }

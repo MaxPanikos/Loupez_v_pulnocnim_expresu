@@ -1,16 +1,29 @@
 package Commands;
 
+import FileManagerHelper.FileManager;
 import Main.Console;
+import Main.World;
 
 public class NewGame implements Command {
     private Console c;
+    private String fileName;
 
-    public NewGame(Console c) {
+    public NewGame(Console c, String fileName) {
         this.c = c;
+        this.fileName = fileName;
     }
 
     @Override
     public String execute(String command) throws Exception {
+        FileManager fileManager = FileManager.loadData(fileName);
+        try {
+            World newWorld = fileManager.getRoomMap();
+            c.setWorld(newWorld);
+            System.out.println(c.getWorld().getRooms());
+            System.out.println(c.getWorld() == null);
+        } catch (Exception e) {
+            System.err.println("Nastala chyba pri nacitani souboru!");
+        }
         c.game();
         return "";
     }
@@ -22,7 +35,7 @@ public class NewGame implements Command {
 
     @Override
     public String text() {
-        return "Hra se spousti...";
+        return "Nova hra se spousti...";
     }
 
     @Override
@@ -32,6 +45,6 @@ public class NewGame implements Command {
 
     @Override
     public String toString() {
-        return "Nova hra: nova hra";
+        return " - Spusti novou hru.";
     }
 }

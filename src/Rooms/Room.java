@@ -3,10 +3,11 @@ package Rooms;
 import Characters.NPC;
 import Items.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Room {
+public class Room implements Serializable {
     private String ID;
     private String name;
     private String description;

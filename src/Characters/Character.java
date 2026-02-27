@@ -2,7 +2,9 @@ package Characters;
 
 import Rooms.Room;
 
-public abstract class Character {
+import java.io.Serializable;
+
+public abstract class Character implements Serializable {
     protected Room currentRoom;
 
     public Character(Room currentRoom) {

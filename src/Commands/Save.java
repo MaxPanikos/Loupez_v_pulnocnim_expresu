@@ -1,13 +1,16 @@
 package Commands;
 
-import Items.Item;
+import FileManagerHelper.FileManager;
 import Main.World;
 
-public class Inspect implements Command{
-    private World world;
 
-    public Inspect(World world) {
+public class Save implements Command {
+    private World world;
+    private String fileName;
+
+    public Save(World world, String filename) {
         this.world = world;
+        this.fileName = filename;
     }
 
     @Override
@@ -20,15 +23,10 @@ public class Inspect implements Command{
         return "";
     }
 
-
     @Override
     public String execute(String command) throws Exception {
-        Item item = world.getPlayer().getInventoryItem(command);
-        if (item != null) {
-            this.world.setMinutesLeft(this.world.getMinutesLeft() - 1);
-            return item.getDescription();
-        }
-        throw new Exception("Tento item nemate v inventari!");
+        FileManager.saveLastGame(world, fileName);
+        return "Hra byla ulozena.";
     }
 
     @Override
@@ -38,6 +36,6 @@ public class Inspect implements Command{
 
     @Override
     public String toString() {
-        return " <item> - Hrac si prohledne dany predmet z blizka.";
+        return " - Ulozi hru, ktera je nyni rozehrana.";
     }
 }

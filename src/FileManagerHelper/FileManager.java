@@ -9,10 +9,7 @@ import Rooms.Room;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -144,6 +141,30 @@ public class FileManager {
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("Chyba při konverzi DTO na herní objekty: " + e.getMessage());
+        }
+    }
+
+    public static void saveLastGame (World world, String filePath) throws Exception{
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filePath));
+            out.writeObject(world);
+            out.flush();
+            out.close();
+        } catch (IOException e) {
+            throw new Exception("Zadana spatna cesta!");
+        } catch (Exception e) {
+            throw new Exception("Nastala neocekavana chyba pri ukladani hry!");
+        }
+    }
+
+    public static World loadLastGame (String filePath) throws Exception{
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath));
+            return (World) in.readObject();
+        } catch (IOException e) {
+            throw new Exception("Zadana spatna cesta!");
+        } catch (Exception e) {
+            throw new Exception("Nastala neoceka chyba pri nahravani hry!");
         }
     }
 }

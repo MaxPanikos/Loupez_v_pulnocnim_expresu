@@ -48,6 +48,6 @@ public class Give implements Command {
 
     @Override
     public String toString() {
-        return "Dat predmet postave: dej <npc> <item>";
+        return " <npc> <item> - Hrac da postave nejaky predmet. Tento prikaz odemyka dalsi dialogy.";
     }
 }

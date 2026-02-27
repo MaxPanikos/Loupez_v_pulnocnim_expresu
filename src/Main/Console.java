@@ -4,6 +4,7 @@ import Commands.*;
 import FileManagerHelper.FileManager;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Console {
@@ -11,6 +12,8 @@ public class Console {
     private HashMap<String, Command> menuCommands;
     private World world;
     private Scanner sc;
+    private final String gameDataPath = "/gamedata.json";
+    private final String saveDataPath = "res/lastsave";
 
     /**
      * constructor + setup of the game
@@ -18,9 +21,10 @@ public class Console {
     public Console() {
         this.gameCommands = new HashMap<>();
         this.menuCommands = new HashMap<>();
-        this.world = null;
+        this.world = new World();
         this.sc = new Scanner(System.in);
-        FileManager fileManager = FileManager.loadData("/gamedata.json");
+        /*
+        FileManager fileManager = FileManager.loadData(gameDataPath);
         try {
             world = fileManager.getRoomMap();
         } catch (Exception e) {
@@ -28,21 +32,11 @@ public class Console {
         }
         System.out.println("Pocet nactenych mistnosti: " + world.getRooms().size());
         System.out.println();
-        gameCommands.put("konec", new Exit());
-        gameCommands.put("pomoc", new Help(gameCommands));
-        gameCommands.put("prohledej", new Explore(world));
-        gameCommands.put("zeptej", new Ask(world));
-        gameCommands.put("obvin", new Accuse(world));
-        gameCommands.put("seber", new Grab(world));
-        gameCommands.put("odhod", new Discard(world ));
-        gameCommands.put("jdi", new Move(world));
-        gameCommands.put("prohledni", new Inspect(world));
-        gameCommands.put("podej", new Give(world));
-        gameCommands.put("odemkni", new Unlock(world));
-
+         */
         menuCommands.put("konec", new Exit());
         menuCommands.put("pomoc", new Help(menuCommands));
-        menuCommands.put("nova hra", new NewGame(this));
+        menuCommands.put("nova hra", new NewGame(this, gameDataPath));
+        menuCommands.put("nacist hru", new LoadGame(this, saveDataPath));
     }
 
     /**
@@ -51,10 +45,11 @@ public class Console {
     public void menu () {
         boolean exit = false;
         while (!exit) {
-            System.out.println(Colors.YELLOW + "Loupez v pulnocnim expresu" + Colors.RESET);
-            System.out.println("Napiste co chcete udelat:");
-            System.out.println(Colors.GREEN + "nova hra" + Colors.RESET + " - Vytvorit novou hru.");
-            System.out.println(Colors.GREEN + "konec" + Colors.RESET + " - Vytvorit novou hru.");
+            System.out.println(Colors.BRIGHTWHITE + Colors.BOLD + "Loupez v pulnocnim expresu" + Colors.RESET);
+            System.out.println(Colors.BLUE + "Napiste co chcete udelat:" + Colors.RESET);
+            for (Map.Entry<String, Command> entry : menuCommands.entrySet()) {
+                System.out.println(Colors.BRIGHTCYAN + entry.getKey() + Colors.RESET + entry.getValue());
+            }
             System.out.print(">> ");
             String input = sc.nextLine();
             String commandType = input.toLowerCase();
@@ -123,5 +118,29 @@ public class Console {
                 menu();
             }
         }
+    }
+
+    public void setWorld(World world) {
+        this.world = world;
+        setGameCommands();
+    }
+
+    public World getWorld() {
+        return world;
+    }
+
+    public void setGameCommands () {
+        gameCommands.put("konec", new Exit());
+        gameCommands.put("pomoc", new Help(gameCommands));
+        gameCommands.put("prohledej", new Explore(world));
+        gameCommands.put("zeptej", new Ask(world));
+        gameCommands.put("obvin", new Accuse(world));
+        gameCommands.put("seber", new Grab(world));
+        gameCommands.put("odhod", new Discard(world ));
+        gameCommands.put("jdi", new Move(world));
+        gameCommands.put("prohledni", new Inspect(world));
+        gameCommands.put("podej", new Give(world));
+        gameCommands.put("odemkni", new Unlock(world));
+        gameCommands.put("ulozit", new Save(world, saveDataPath));
     }
 }

@@ -23,6 +23,6 @@ public class Exit implements Command {
 
     @Override
     public String toString() {
-        return "Opustit hru: konec";
+        return " - Ukonci hru.";
     }
 }

@@ -45,6 +45,6 @@ public class Accuse implements Command {
 
     @Override
     public String toString() {
-        return "Obvinit: obvin <npc>";
+        return " <npc> - Obvini nejakou postavu. K dohrani hry jsou potreba motivy a dukazy.";
     }
 }

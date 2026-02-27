@@ -39,6 +39,6 @@ public class Discard implements Command {
 
     @Override
     public String toString() {
-        return "Odhodit: odhod <item v inventari>";
+        return " <item> - Hrac vyhodi tento item z inventare a necha ho v mistnosti, kde se prave nachazi.";
     }
 }

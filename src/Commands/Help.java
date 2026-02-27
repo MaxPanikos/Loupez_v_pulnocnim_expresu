@@ -1,6 +1,9 @@
 package Commands;
 
+import Main.Colors;
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class Help implements Command {
     private HashMap<String, Command> commands;
@@ -11,13 +14,13 @@ public class Help implements Command {
     @Override
     public String execute(String command) {
         StringBuilder str = new StringBuilder();
-        str.append("Vsechny prikazy: ");
+        str.append(Colors.BRIGHTBLUE + "Vsechny prikazy: " + Colors.RESET + '\n');
         int i = 0;
-        for (Command c : commands.values()) {
-            str.append(c);
+        for (Map.Entry<String, Command> entry : commands.entrySet()) {
+            str.append(Colors.BLUE + entry.getKey() + Colors.RESET + entry.getValue());
             i++;
             if (i < commands.size()) {
-                str.append(", ");
+                str.append('\n');
             }
         }
         return str.toString();
@@ -40,6 +43,6 @@ public class Help implements Command {
 
     @Override
     public String toString() {
-        return "Pomoc: pomoc";
+        return " - Zavola prikaz, ktery vypise vsechny prikazy.";
     }
 }

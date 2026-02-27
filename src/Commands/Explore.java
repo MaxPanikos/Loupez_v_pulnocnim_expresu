@@ -62,6 +62,6 @@ public class Explore implements Command {
 
     @Override
     public String toString() {
-        return "Prohledat: prohledej";
+        return " - Vypise vsechny viditelne predmety v mistnosti.";
     }
 }

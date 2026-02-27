@@ -43,6 +43,6 @@ public class Ask implements Command {
 
     @Override
     public String toString() {
-        return "Zeptat se: zeptej <jmeno npc>";
+        return " <npc> - Zepta se postavy a ta muze odpovedet.";
     }
 }

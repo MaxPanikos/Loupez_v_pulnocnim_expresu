@@ -47,6 +47,6 @@ public class Unlock implements Command {
 
     @Override
     public String toString() {
-        return "Odemkni mistnost: odemkni <mistnost>";
+        return " <mistnost> - Odemkne mistnost, pokud ma hrac potrebny predmet.";
     }
 }

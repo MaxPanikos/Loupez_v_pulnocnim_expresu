@@ -40,6 +40,6 @@ public class Move implements Command{
 
     @Override
     public String toString() {
-        return "Chodit: jdi <nazev mistnosti>";
+        return " <mistnost> - Presune postavu hrace do jine mistnosti.";
     }
 }
