@@ -2,7 +2,9 @@ package Rooms;
 
 import Characters.NPC;
 import Items.Item;
+import Main.Colors;
 
+import javax.swing.plaf.ColorUIResource;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,31 +36,31 @@ public class Room implements Serializable {
      * @return String
      */
     public String text () {
-        String head = "Jsi v mistnostni " + name + "\n" + description;
-        String npcsString = "Lide v mistnosti: ";
+        String head = Colors.BOLD + Colors.BRIGHTWHITE + "Jsi v mistnostni: " + Colors.RESET + Colors.UNDERLINE + name + Colors.RESET + " (" + Colors.CYAN + ID + Colors.RESET + ")" + "\n" + Colors.ITALIC + description + Colors.RESET;
+        String npcsString = Colors.BOLD + Colors.BRIGHTWHITE + "Lide v mistnosti: " + Colors.RESET;
         if (npcs.isEmpty()) {
             npcsString += "Zadni lide.";
         } else {
             int i = 0;
             for (NPC npc : npcs.values()) {
-                if (i == npcs.size()-1) {
-                    npcsString += npc.getName() + " (" + npc.getID() + ")";
-                } else {
-                    npcsString += npc.getName() + " (" + npc.getID() + "), ";
+                npcsString += Colors.UNDERLINE + npc.getName() + Colors.RESET + " (" + Colors.CYAN + npc.getID() + Colors.RESET + ")";
+                if (i != npcs.size()-1) {
+                    npcsString += ", ";
                     i++;
                 }
             }
+            npcsString += ".";
         }
-        String roomRooms = "Z teto mistnosti muzete do (" + rooms.size() + "): ";
+        String roomRooms = Colors.BOLD + Colors.BRIGHTWHITE + "Z teto mistnosti muzete do (" + rooms.size() + "): " + Colors.RESET;
         int i = 0;
         for (Room room : rooms.values()) {
-            if (i == rooms.size()-1) {
-                roomRooms += room.getName() + " (" + room.getID() + ")";
-            } else {
-                roomRooms += room.getName() + " (" + room.getID() + "), ";
+            roomRooms += Colors.UNDERLINE + room.getName() + Colors.RESET + " (" + Colors.CYAN + room.getID() + Colors.RESET + ")";
+            if (i != rooms.size()-1) {
+                roomRooms += ", ";
                 i++;
             }
         }
+        roomRooms += ".";
 
         return head + "\n" + npcsString + "\n" + roomRooms;
     }

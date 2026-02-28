@@ -1,6 +1,7 @@
 package Characters;
 
 import Items.Item;
+import Main.Colors;
 import Rooms.Room;
 
 import java.util.ArrayList;
@@ -10,9 +11,12 @@ public class Player extends Character{
     private Item[] inventory;
     private ArrayList<String> proofs;
 
-    public Player(Room startingRoom){
+    public Player(Room startingRoom, int inventorySize){
+        if (inventorySize <=0 ) {
+            throw new IllegalArgumentException("Inventar hrace musi byt vetsi nez 0!");
+        }
         super(startingRoom);
-        this.inventory = new Item[2];
+        this.inventory = new Item[inventorySize];
         this.proofs = new ArrayList<>();
     }
 
@@ -129,15 +133,15 @@ public class Player extends Character{
      * @return String
      */
     public String inventory () {
-        String inventoryString = "Inventar: ";
+        String inventoryString = Colors.BRIGHTWHITE + Colors.BOLD + "Inventar: " + Colors.RESET;
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i] != null) {
-                inventoryString += i + ". - " + inventory[i].getID();
+                inventoryString += (i+1) + ". - " + inventory[i].getID();
                 if (i < inventory.length - 1) {
                     inventoryString += ", ";
                 }
             } else {
-                inventoryString += i + ". - nic";
+                inventoryString += (i+1) + ". - nic";
                 if (i < inventory.length - 1) {
                     inventoryString += ", ";
                 }

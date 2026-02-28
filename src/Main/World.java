@@ -15,7 +15,7 @@ public class World implements Serializable {
 
     public World() {
         this.rooms = new HashMap<>();
-        this.player = new Player(null);
+        this.player = new Player(null, 1);
         this.gameOver = false;
         this.minutesLeft = 0;
         this.prologue = "";

@@ -27,6 +27,7 @@ public class FileManager {
     private ThiefDTO thief;
     private int minutesLeft;
     private String prologue;
+    private String inventorySize;
 
     /**
      * Načte data z JSON souboru.
@@ -135,7 +136,7 @@ public class FileManager {
                 }
             }
 
-            World world = new World(worldMap, new Player(startingRoomObj), minutesLeft, prologue);
+            World world = new World(worldMap, new Player(startingRoomObj, Integer.parseInt(inventorySize)), minutesLeft, prologue);
 
             return world;
         } catch (Exception e) {

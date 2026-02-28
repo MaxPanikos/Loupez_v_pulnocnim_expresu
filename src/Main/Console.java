@@ -84,7 +84,7 @@ public class Console {
         boolean exit = false;
         while (!exit) {
             if (!world.isGameOver() && !(world.getMinutesLeft() <= 0)) {
-                System.out.println(">> Zbyva minut: " + world.getMinutesLeft());
+                System.out.println(">> " + Colors.ITALIC + "Zbyva minut: " + world.getMinutesLeft() + Colors.RESET);
                 System.out.println(">> " + world.getPlayer().getCurrentRoom().text());
                 System.out.println(">> " + world.getPlayer().inventory());
                 System.out.print(">> ");
@@ -108,8 +108,8 @@ public class Console {
                 }
                 System.out.println();
             } else {
-                if (world.isGameOver()) {
-                    System.out.println(Colors.GREEN + "Hrac vyhral. Dopadl zlodeje a zadrzel ho!" + Colors.RESET);
+                if (world.isGameOver() && world.getMinutesLeft() > 0) {
+                    System.out.println(Colors.GREEN + Colors.BOLD + "Hrac vyhral. Dopadl zlodeje a zadrzel ho!" + Colors.RESET);
                 } else if (world.getMinutesLeft() <= 0) {
                     System.out.println(Colors.YELLOW + "Hrac nestihl zlodeje chytit v cas a uprchl!" + Colors.RESET);
                 } else {
@@ -129,7 +129,7 @@ public class Console {
         return world;
     }
 
-    public void setGameCommands () {
+    private void setGameCommands () {
         gameCommands.put("konec", new Exit());
         gameCommands.put("pomoc", new Help(gameCommands));
         gameCommands.put("prohledej", new Explore(world));

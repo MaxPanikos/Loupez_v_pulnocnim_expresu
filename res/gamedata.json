@@ -57,7 +57,7 @@
       "name": "Madam Hrušková",
       "age": 50,
       "currentRoomID": "kupe1",
-      "basicDialogue": "(Vzlyká a lapá po dechu) Můj náhrdelník... pryč! Nedokážu mluvit...",
+      "basicDialogue": "(Vzlyká a lapá po dechu) Můj náhrdelník... pryč!",
       "itemForDialogue": "nahrdelnik",
       "afterItemDialogue": "Ooo děkuji že jste mi našel a vrátil náhrdelník."
     },
@@ -66,7 +66,7 @@
       "name": "Madam Jabková",
       "age": 45,
       "currentRoomID": "kupe1",
-      "basicDialogue": "(Vzlyká a lapá po dechu) Vůbec nechápu co se stalo... bylo to tak nečekané...",
+      "basicDialogue": "Vůbec nechápu co se stalo... bylo to tak nečekané... Nedokážu mluvit... Potřebuji leky na uklidnění...",
       "itemForDialogue": "leky",
       "afterItemDialogue": "Už je mi lépe. Ukradli ho v noci. Určitě to byl ten Kouzelník odvedle!"
     },
@@ -161,6 +161,7 @@
   },
   "startingRoomID": "sluzebni_oddil",
   "minutesLeft": 180,
+  "inventorySize": 2,
   "prologue": "Noční expres na trase Praha–Vídeň uvízl v ledové vánici. Ticho náhle protne výkřik Madam Hruškové z Kupé 1 – její drahocenný náhrdelník je pryč! Jako průvodčí Karel máte čas jen do rána, než dorazí pomoc a vlak se znovu rozjede. Najděte zloděje dříve, než se souprava pohne a pachatel nenávratně zmizí v ulicích Vídně.",
   "thief": {
     "ID": "filip",

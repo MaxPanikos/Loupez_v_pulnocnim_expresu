@@ -11,7 +11,7 @@ class PlayerTest {
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
-        this.player = new Player(new Room("nazev", "jmeno", "nic"));
+        this.player = new Player(new Room("nazev", "jmeno", "nic"), 2);
     }
 
     @org.junit.jupiter.api.Test
