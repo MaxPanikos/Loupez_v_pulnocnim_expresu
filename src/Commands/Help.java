@@ -14,7 +14,7 @@ public class Help implements Command {
     @Override
     public String execute(String command) {
         StringBuilder str = new StringBuilder();
-        str.append(Colors.BRIGHTBLUE + "Vsechny prikazy: " + Colors.RESET + '\n');
+        str.append(Colors.BRIGHTBLUE + "Vsechny prikazy " + Colors.RESET + "(do <> napiste vzdy " + Colors.CYAN + Colors.UNDERLINE + "modre vyznacene ID" + Colors.RESET + ")" + Colors.BRIGHTBLUE + ": " + Colors.RESET + '\n');
         int i = 0;
         for (Map.Entry<String, Command> entry : commands.entrySet()) {
             str.append(Colors.BLUE + entry.getKey() + Colors.RESET + entry.getValue());

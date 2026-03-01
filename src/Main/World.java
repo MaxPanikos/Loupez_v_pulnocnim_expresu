@@ -13,6 +13,8 @@ public class World implements Serializable {
     private int minutesLeft;
     private String prologue;
 
+    private final static int SerialVersionUID = 1;
+
     public World() {
         this.rooms = new HashMap<>();
         this.player = new Player(null, 1);

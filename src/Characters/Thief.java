@@ -30,7 +30,6 @@ public class Thief extends NPC{
         } else {
             return name + ": Nemate dukazy a ja to opravdu nejsem!";
         }
-
     }
 
 

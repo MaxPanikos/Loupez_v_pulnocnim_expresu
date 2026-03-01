@@ -13,7 +13,7 @@ public class Console {
     private World world;
     private Scanner sc;
     private final String gameDataPath = "/gamedata.json";
-    private final String saveDataPath = "res/lastsave";
+    private final String saveDataPath = "lastsave.obj";
 
     /**
      * constructor + setup of the game
@@ -23,16 +23,6 @@ public class Console {
         this.menuCommands = new HashMap<>();
         this.world = new World();
         this.sc = new Scanner(System.in);
-        /*
-        FileManager fileManager = FileManager.loadData(gameDataPath);
-        try {
-            world = fileManager.getRoomMap();
-        } catch (Exception e) {
-            System.err.println("Nastala chyba pri nacitani souboru!");
-        }
-        System.out.println("Pocet nactenych mistnosti: " + world.getRooms().size());
-        System.out.println();
-         */
         menuCommands.put("konec", new Exit());
         menuCommands.put("pomoc", new Help(menuCommands));
         menuCommands.put("nova hra", new NewGame(this, gameDataPath));
@@ -109,12 +99,13 @@ public class Console {
                 System.out.println();
             } else {
                 if (world.isGameOver() && world.getMinutesLeft() > 0) {
-                    System.out.println(Colors.GREEN + Colors.BOLD + "Hrac vyhral. Dopadl zlodeje a zadrzel ho!" + Colors.RESET);
+                    System.out.println(Colors.BRIGHTYELLOW + Colors.UNDERLINE + "Hrac vyhral. Dopadl zlodeje a zadrzel ho!" + Colors.RESET);
                 } else if (world.getMinutesLeft() <= 0) {
                     System.out.println(Colors.YELLOW + "Hrac nestihl zlodeje chytit v cas a uprchl!" + Colors.RESET);
                 } else {
                     System.out.println(Colors.RED + "Nastala neocekava chyba. Posilam vas do menu!" + Colors.RESET);
                 }
+                System.out.println();
                 menu();
             }
         }

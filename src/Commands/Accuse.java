@@ -19,7 +19,7 @@ public class Accuse implements Command {
                 this.world.setGameOver(true);
                 this.world.setMinutesLeft(this.world.getMinutesLeft() - 1);
             }
-            return npc.accuse(world.getPlayer().getProofs());
+            return npc.accuse(world.getPlayer().inventoryToStringList());
         }
         throw new Exception("Tato osoba se nenachazi v teto mistnosti!");
     }
