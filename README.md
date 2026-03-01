@@ -38,7 +38,7 @@ prohledni [postava] – Detailně prozkoumá vzhled a oblečení postavy.
 zeptej [postava] – Zahájí dialog s daným NPC.
 
 
-podej [postava] – Otevře menu pro předání předmětu postavě (např. léky nebo cigarety).
+podej [postava] [věc] – Předá předmět postavě.
 
 
 obvin [postava] – Konfrontuje podezřelého s nasbíranými důkazy.

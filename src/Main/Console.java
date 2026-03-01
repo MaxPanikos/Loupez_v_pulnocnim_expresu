@@ -13,7 +13,7 @@ public class Console {
     private World world;
     private Scanner sc;
     private final String gameDataPath = "/gamedata.json";
-    private final String saveDataPath = "lastsave.obj";
+    private final String saveDataPath = "res/lastsave.obj";
 
     /**
      * constructor + setup of the game
