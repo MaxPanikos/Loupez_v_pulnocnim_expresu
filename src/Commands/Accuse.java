@@ -17,8 +17,8 @@ public class Accuse implements Command {
         if (npc != null) {
             if (npc.accuseTest(world.getPlayer().inventoryToStringList())) {
                 this.world.setGameOver(true);
-                this.world.setMinutesLeft(this.world.getMinutesLeft() - 1);
             }
+            this.world.setMinutesLeft(this.world.getMinutesLeft() - 1);
             return npc.accuse(world.getPlayer().inventoryToStringList());
         }
         throw new Exception("Tato osoba se nenachazi v teto mistnosti!");

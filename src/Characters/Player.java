@@ -12,10 +12,10 @@ public class Player extends Character{
     private ArrayList<String> proofs;
 
     public Player(Room startingRoom, int inventorySize){
+        super(startingRoom);
         if (inventorySize <=0 ) {
             throw new IllegalArgumentException("Inventar hrace musi byt vetsi nez 0!");
         }
-        super(startingRoom);
         this.inventory = new Item[inventorySize];
         this.proofs = new ArrayList<>();
     }
